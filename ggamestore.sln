@@ -3,9 +3,40 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35201.131
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BF705BDA-E1AC-4AD5-A873-BDD08D01CFAF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{9A0CC623-9898-48DA-A56B-9C6AE164D358}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{43ED42E5-022C-4830-849A-31C770777569}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{55855A9D-D655-4AC4-914B-F6DC443D9D84}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{05CDD17B-F03F-4E3D-B8FB-0C6C019B8977}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5C5A32F5-8A5C-4D9A-98CA-BE7530C66530}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamestore.Domain", "Gamestore.Domain\Gamestore.Domain.csproj", "{E10F0D1F-8ADF-4957-B5E0-9255B1181680}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E10F0D1F-8ADF-4957-B5E0-9255B1181680}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E10F0D1F-8ADF-4957-B5E0-9255B1181680}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E10F0D1F-8ADF-4957-B5E0-9255B1181680}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E10F0D1F-8ADF-4957-B5E0-9255B1181680}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9A0CC623-9898-48DA-A56B-9C6AE164D358} = {BF705BDA-E1AC-4AD5-A873-BDD08D01CFAF}
+		{43ED42E5-022C-4830-849A-31C770777569} = {BF705BDA-E1AC-4AD5-A873-BDD08D01CFAF}
+		{55855A9D-D655-4AC4-914B-F6DC443D9D84} = {BF705BDA-E1AC-4AD5-A873-BDD08D01CFAF}
+		{05CDD17B-F03F-4E3D-B8FB-0C6C019B8977} = {BF705BDA-E1AC-4AD5-A873-BDD08D01CFAF}
+		{E10F0D1F-8ADF-4957-B5E0-9255B1181680} = {05CDD17B-F03F-4E3D-B8FB-0C6C019B8977}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A956566B-E1D5-4D2F-B625-1AD1682F43A2}
