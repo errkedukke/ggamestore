@@ -1,4 +1,4 @@
-﻿namespace Gamestore.Application.Features.Game.Queries.GetAllGames;
+﻿namespace Gamestore.Application.Features.Game.Queries.GetGames;
 
 public class GameDto
 {

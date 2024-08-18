@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Gamestore.Application.Features.Game.Queries.GetAllGames;
+using Gamestore.Application.Features.Game.Queries.GetGames;
 
 namespace Gamestore.Application.MappingProfiles;
 
