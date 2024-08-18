@@ -25,5 +25,5 @@ public class Game : BaseEntity
 
     public int Views { get; set; }
 
-    public string? ImageKey { get; set; }
+    public string ImageKey { get; set; } = string.Empty;
 }

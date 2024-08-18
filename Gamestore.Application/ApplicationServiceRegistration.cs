@@ -1,18 +1,17 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace Gamestore.Application
+namespace Gamestore.Application;
+
+public static class ApplicationServiceRegistration
 {
-    public static class ApplicationServiceRegistration
+    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
-        {
-            var executionAssembly = Assembly.GetExecutingAssembly();
+        var executionAssembly = Assembly.GetExecutingAssembly();
 
-            services.AddAutoMapper(executionAssembly);
-            services.AddMediatR(x => x.RegisterServicesFromAssembly(executionAssembly));
+        services.AddAutoMapper(executionAssembly);
+        services.AddMediatR(x => x.RegisterServicesFromAssembly(executionAssembly));
 
-            return services;
-        }
+        return services;
     }
 }

@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
+using Gamestore.Application.Features.Game.Queries.GetAllGames;
 
-namespace Gamestore.Application.MappingProfiles
+namespace Gamestore.Application.MappingProfiles;
+
+public class GameProfile : Profile
 {
-    public class GameProfile : Profile
+    public GameProfile()
     {
-        public GameProfile()
-        {
-            CreateMap<GameDto, Game>().ReverseMap();
-        }
+        CreateMap<GameDto, Game>().ReverseMap();
     }
 }
