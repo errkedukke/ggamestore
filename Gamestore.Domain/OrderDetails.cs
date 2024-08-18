@@ -1,18 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Gamestore.Domain.Common;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-public class OrderDetails
+public class OrderDetails : BaseEntity
 {
-    [Key]
-    public Guid Id { get; set; }
-
     [Required]
     [ForeignKey(nameof(Order))]
-    public Guid OrderId { get; set; }
+    public int OrderId { get; set; }
 
     [Required]
     [ForeignKey(nameof(Game))]
-    public Guid ProductId { get; set; }
+    public int ProductId { get; set; }
 
     [Required]
     public string ProductName { get; set; } = string.Empty;

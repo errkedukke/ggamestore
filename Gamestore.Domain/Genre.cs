@@ -1,10 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Gamestore.Domain.Common;
+using System.ComponentModel.DataAnnotations;
 
-public class Genre
+public class Genre : BaseEntity
 {
-    [Key]
-    public Guid Id { get; set; }
-
     [Required]
     public string Name { get; set; } = string.Empty;
 

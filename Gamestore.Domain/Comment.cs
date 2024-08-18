@@ -1,33 +1,28 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Gamestore.Domain.Common;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Gamestore.Domain
 {
-    public class Comment
+    public class Comment : BaseEntity
     {
         [Required]
-        public Guid Id { get; set; }
-
-        [Required]
         [ForeignKey(nameof(Game))]
-        public Guid GameId { get; set; }
+        public int GameId { get; set; }
 
         [Required]
         public string AuthorName { get; set; } = string.Empty;
 
         [Required]
         [ForeignKey(nameof(Customer))]
-        public Guid AuthorId { get; set; }
+        public int AuthorId { get; set; }
 
         [Required]
         public string Body { get; set; } = string.Empty;
 
-        public Guid? ParentId { get; set; }
+        public int ParentId { get; set; }
 
         [Required]
         public bool? IsCommentBanned { get; set; }
-
-        [Required]
-        public DateTime DateTime { get; set; }
     }
 }

@@ -1,10 +1,9 @@
-﻿using Gamestore.Domain.Enums;
+﻿using Gamestore.Domain.Common;
+using Gamestore.Domain.Enums;
 
-public class Resource
+public class Resource : BaseEntity
 {
-    public Guid Id { get; set; }
-
-    public Guid GameId { get; set; }
+    public int GameId { get; set; }
 
     public Language Language { get; set; }
 

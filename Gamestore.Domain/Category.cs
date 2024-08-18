@@ -1,10 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Gamestore.Domain.Common;
 
-public class Category
+public class Category : BaseEntity
 {
-    [Required]
-    public Guid Id { get; set; }
-
     public string CategoryName { get; set; } = string.Empty;
 
     public string Description { get; set; } = string.Empty;

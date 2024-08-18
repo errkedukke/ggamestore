@@ -1,15 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Gamestore.Domain.Common;
 
-public class Customer
+public class Customer : BaseEntity
 {
-    [Key]
-    public Guid Id { get; set; }
-
     public string Firstname { get; set; } = string.Empty;
 
     public string Lastname { get; set; } = string.Empty;
 
     public string Email { get; set; } = string.Empty;
+
+    public string Password { get; set; } = string.Empty;
 
     public string MobileNumber { get; set; } = string.Empty;
 }

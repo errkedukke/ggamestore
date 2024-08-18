@@ -1,11 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Gamestore.Domain.Common;
+using Gamestore.Domain.Enums;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-public class Game
+public class Game : BaseEntity
 {
-    [Key]
-    public Guid Id { get; set; }
-
     [Required]
     public string Name { get; set; } = string.Empty;
 
@@ -13,14 +12,14 @@ public class Game
     public string Key { get; set; } = string.Empty;
 
     [ForeignKey(nameof(Genre))]
-    public Guid? GenreId { get; set; }
+    public int? GenreId { get; set; }
 
     [Required]
     [ForeignKey(nameof(Platform))]
-    public Guid PlatformId { get; set; }
+    public int PlatformId { get; set; }
 
     [ForeignKey(nameof(Publisher))]
-    public Guid? PublisherId { get; set; }
+    public int? PublisherId { get; set; }
 
     [Required]
     public decimal Price { get; set; }
@@ -38,8 +37,6 @@ public class Game
 
     [Required]
     public int Views { get; set; }
-
-    public bool IsDeleted { get; set; }
 
     public string? ImageKey { get; set; }
 }
