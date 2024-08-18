@@ -3,7 +3,7 @@ using Gamestore.Domain.Enums;
 
 public class Resource : BaseEntity
 {
-    public int GameId { get; set; }
+    public Game? Game { get; set; }
 
     public Language Language { get; set; }
 

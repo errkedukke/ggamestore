@@ -1,13 +1,10 @@
 ﻿using Gamestore.Domain.Common;
-using System.ComponentModel.DataAnnotations;
 
 public class Publisher : BaseEntity
 {
-    [Required]
-    public string? CompanyName { get; set; }
+    public string CompanyName { get; set; } = string.Empty;
 
-    [Required]
-    public string? HomePage { get; set; }
+    public string HomePage { get; set; } = string.Empty;
 
-    public string? Description { get; set; }
+    public string Description { get; set; } = string.Empty;
 }
