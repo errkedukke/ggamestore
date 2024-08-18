@@ -19,7 +19,7 @@ public class Game : BaseEntity
 
     public bool Discontinued { get; set; }
 
-    public string? Description { get; set; }
+    public string Description { get; set; } = string.Empty;
 
     public DateTime ReleaseDate { get; set; }
 
