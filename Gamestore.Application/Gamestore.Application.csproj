@@ -16,7 +16,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Category\Commands\" />
+    <Folder Include="Features\Category\Queries\" />
+    <Folder Include="Features\Comment\Commands\" />
+    <Folder Include="Features\Comment\Queries\" />
+    <Folder Include="Features\Customer\Commands\" />
+    <Folder Include="Features\Customer\Queries\" />
     <Folder Include="Features\Game\Commands\" />
+    <Folder Include="Features\Genre\Commands\" />
+    <Folder Include="Features\Genre\Queries\" />
+    <Folder Include="Features\OrderDetails\Commands\" />
+    <Folder Include="Features\OrderDetails\Queries\" />
+    <Folder Include="Features\Order\Commands\" />
+    <Folder Include="Features\Order\Queries\" />
+    <Folder Include="Features\Publisher\Commands\" />
+    <Folder Include="Features\Publisher\Queries\" />
   </ItemGroup>
 
 </Project>
