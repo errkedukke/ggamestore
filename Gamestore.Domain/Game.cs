@@ -1,4 +1,6 @@
-﻿using Gamestore.Domain.Common;
+﻿namespace Gamestore.Domain;
+
+using Gamestore.Domain.Common;
 using Gamestore.Domain.Enums;
 
 public class Game : BaseEntity

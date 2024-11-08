@@ -1,9 +1,11 @@
-﻿using Gamestore.Domain.Common;
+﻿namespace Gamestore.Domain;
+
+using Gamestore.Domain.Common;
 using Gamestore.Domain.Enums;
 
 public class Order : BaseEntity
 {
-    public Customer? Customer { get; set; }
+    public User? Customer { get; set; }
 
     public DateTime OrderDate { get; set; }
 

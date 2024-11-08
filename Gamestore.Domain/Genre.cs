@@ -1,4 +1,6 @@
-﻿using Gamestore.Domain.Common;
+﻿namespace Gamestore.Domain;
+
+using Gamestore.Domain.Common;
 
 public class Genre : BaseEntity
 {

@@ -1,4 +1,4 @@
-﻿using Gamestore.Application.Contracts.Persistance;
+﻿using Gamestore.Application.Contracts.Persistance.Common;
 
 public interface IGameRepository : IGenericRepository<Game>
 {

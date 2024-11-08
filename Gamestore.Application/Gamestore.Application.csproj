@@ -7,6 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\Customer\**" />
+    <Compile Remove="Features\Genres\**" />
+    <Compile Remove="Features\OrderDetails\**" />
+    <Compile Remove="Features\Orders\**" />
+    <Compile Remove="Features\Publishers\**" />
+    <EmbeddedResource Remove="Features\Customer\**" />
+    <EmbeddedResource Remove="Features\Genres\**" />
+    <EmbeddedResource Remove="Features\OrderDetails\**" />
+    <EmbeddedResource Remove="Features\Orders\**" />
+    <EmbeddedResource Remove="Features\Publishers\**" />
+    <None Remove="Features\Customer\**" />
+    <None Remove="Features\Genres\**" />
+    <None Remove="Features\OrderDetails\**" />
+    <None Remove="Features\Orders\**" />
+    <None Remove="Features\Publishers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="MediatR" Version="12.4.0" />
   </ItemGroup>
@@ -16,20 +34,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Category\Commands\" />
-    <Folder Include="Features\Comment\Commands\" />
-    <Folder Include="Features\Comment\Queries\" />
-    <Folder Include="Features\Customer\Commands\" />
-    <Folder Include="Features\Customer\Queries\" />
-    <Folder Include="Features\Game\Commands\" />
-    <Folder Include="Features\Genre\Commands\" />
-    <Folder Include="Features\Genre\Queries\" />
-    <Folder Include="Features\OrderDetails\Commands\" />
-    <Folder Include="Features\OrderDetails\Queries\" />
-    <Folder Include="Features\Order\Commands\" />
-    <Folder Include="Features\Order\Queries\" />
-    <Folder Include="Features\Publisher\Commands\" />
-    <Folder Include="Features\Publisher\Queries\" />
+    <Folder Include="Features\Categories\Commands\" />
+    <Folder Include="Features\Categories\Queries\GetCategory\" />
+    <Folder Include="Features\Games\Commands\DeleteGame\" />
+    <Folder Include="Features\Games\Commands\UpdateGame\" />
   </ItemGroup>
 
 </Project>

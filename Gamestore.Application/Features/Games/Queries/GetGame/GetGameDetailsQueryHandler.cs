@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Gamestore.Application.Features.Game.Queries.GetGame;
 
-public class GetGameDetailsQueryHandler : IRequestHandler<GetGameDetailsQuery, GameDetailsDto>
+public class GetGameDetailsQueryHandler : IRequestHandler<GetGameDetailsQuery, GameDto>
 {
     private readonly IGameRepository _gameRepository;
     private readonly IMapper _mapper;
@@ -14,10 +14,10 @@ public class GetGameDetailsQueryHandler : IRequestHandler<GetGameDetailsQuery, G
         _mapper = mapper;
     }
 
-    public async Task<GameDetailsDto> Handle(GetGameDetailsQuery request, CancellationToken cancellationToken)
+    public async Task<GameDto> Handle(GetGameDetailsQuery request, CancellationToken cancellationToken)
     {
         var game = await _gameRepository.GetByIdAsync(request.id);
-        var result = _mapper.Map<GameDetailsDto>(game);
+        var result = _mapper.Map<GameDto>(game);
 
         return result;
     }

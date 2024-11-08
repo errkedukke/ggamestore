@@ -1,17 +1,16 @@
-﻿using Gamestore.Domain.Common;
+﻿namespace Gamestore.Domain;
 
-namespace Gamestore.Domain
+using Gamestore.Domain.Common;
+
+public class Comment : BaseEntity
 {
-    public class Comment : BaseEntity
-    {
-        public Game? Game { get; set; }
+    public Game? Game { get; set; }
 
-        public Customer? Author { get; set; }
+    public User? Author { get; set; }
 
-        public Comment? ParentComment { get; set; }
+    public Comment? ParentComment { get; set; }
 
-        public string Body { get; set; } = string.Empty;
+    public string Body { get; set; } = string.Empty;
 
-        public bool IsBanned { get; set; }
-    }
+    public bool IsBanned { get; set; }
 }

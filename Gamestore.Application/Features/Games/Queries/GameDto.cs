@@ -1,10 +1,8 @@
-﻿namespace Gamestore.Application.Features.Game.Queries.GetGame;
+﻿namespace Gamestore.Application.Features.Game.Queries;
 
-public class GameDetailsDto
+public class GameDto
 {
     public string Name { get; set; } = string.Empty;
-
-    public string Description { get; set; } = string.Empty;
 
     public decimal Price { get; set; }
 
@@ -13,8 +11,6 @@ public class GameDetailsDto
     public bool Discontinued { get; set; }
 
     public DateTime ReleaseDate { get; set; }
-
-    public int Views { get; set; }
 
     public string ImageKey { get; set; } = string.Empty;
 }

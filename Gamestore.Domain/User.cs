@@ -1,6 +1,8 @@
-﻿using Gamestore.Domain.Common;
+﻿namespace Gamestore.Domain;
 
-public class Customer : BaseEntity
+using Gamestore.Domain.Common;
+
+public class User : BaseEntity
 {
     public string Firstname { get; set; } = string.Empty;
 
