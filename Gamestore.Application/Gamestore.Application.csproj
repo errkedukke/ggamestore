@@ -34,7 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Categories\Commands\" />
     <Folder Include="Features\Games\Commands\DeleteGame\" />
     <Folder Include="Features\Games\Commands\UpdateGame\" />
   </ItemGroup>

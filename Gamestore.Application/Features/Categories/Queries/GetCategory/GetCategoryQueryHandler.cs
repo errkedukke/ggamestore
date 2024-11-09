@@ -1,12 +1,26 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using Gamestore.Application.Contracts.Persistance;
+using MediatR;
 
-namespace Gamestore.Application.Features.Categories.Queries.GetCategory
+namespace Gamestore.Application.Features.Categories.Queries.GetCategory;
+
+public class GetCategoryQueryHandler : IRequestHandler<GetCategoryQuery, CategoryDto>
 {
-    public class GetCategoryQueryHandler : IRequestHandler<GetCategoryQuery, Guid>
+    private readonly ICategoryRepository _categoryRepository;
+    private readonly IMapper _mapper;
+
+    public GetCategoryQueryHandler(ICategoryRepository categoryRepository, IMapper mapper)
     {
-        public Task<Guid> Handle(GetCategoryQuery request, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
+        _categoryRepository = categoryRepository;
+        _mapper = mapper;
+    }
+
+    public async Task<CategoryDto> Handle(GetCategoryQuery request, CancellationToken cancellationToken)
+    {
+        var category = await _categoryRepository.GetByIdAsync(request.id);
+        var result = _mapper.Map<CategoryDto>(category);
+
+        return result;
     }
 }
+
