@@ -1,10 +1,12 @@
 ﻿using Gamestore.Domain.Common;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Gamestore.Domain;
 
 public class OrderDetails : BaseEntity
 {
-    public Order? Order { get; set; }
+    [ForeignKey(nameof(Game))]
+    public Guid GameId { get; set; }
 
     public Game? Game { get; set; }
 
