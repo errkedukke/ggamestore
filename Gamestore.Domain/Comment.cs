@@ -5,18 +5,19 @@ namespace Gamestore.Domain;
 
 public class Comment : BaseEntity
 {
-    [ForeignKey(nameof(GameId))]
-    public Game? Game { get; set; }
-
+    [ForeignKey(nameof(Game))]
     public Guid GameId { get; set; }
 
-    [ForeignKey(nameof(AuthorId))]
-    public User? Author { get; set; }
+    public Game? Game { get; set; }
 
+    [ForeignKey(nameof(Author))]
     public Guid? AuthorId { get; set; }
 
-    [ForeignKey(nameof(ParentCommentId))]
+    public User? Author { get; set; }
+
     public Guid? ParentCommentId { get; set; }
+
+    public Comment? ParentComment { get; set; }
 
     public string Body { get; set; } = string.Empty;
 
