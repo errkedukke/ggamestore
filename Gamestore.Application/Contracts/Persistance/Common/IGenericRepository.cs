@@ -12,5 +12,5 @@ public interface IGenericRepository<T> where T : BaseEntity
 
     Task<T> UpdateAsync(T entity);
 
-    Task<T> DeleteAsync(Guid id);
+    Task<T> DeleteAsync(T id);
 }

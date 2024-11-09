@@ -1,11 +1,23 @@
-﻿using MediatR;
+﻿using Gamestore.Application.Contracts.Persistance;
+using MediatR;
 
 namespace Gamestore.Application.Features.Categories.Commands.DeleteCategory;
 
 public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryCommand, Unit>
 {
-    public Task<Unit> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
+    private readonly ICategoryRepository _categoryRepository;
+
+    public DeleteCategoryCommandHandler(ICategoryRepository categoryRepository)
     {
-        throw new NotImplementedException();
+        _categoryRepository = categoryRepository;
+    }
+
+    public async Task<Unit> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
+    {
+        var categoryToDelete = await _categoryRepository.GetByIdAsync(request.Id);
+
+        await _categoryRepository.DeleteAsync(categoryToDelete);
+
+        return Unit.Value;
     }
 }

@@ -33,9 +33,4 @@
     <ProjectReference Include="..\Gamestore.Domain\Gamestore.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Games\Commands\DeleteGame\" />
-    <Folder Include="Features\Games\Commands\UpdateGame\" />
-  </ItemGroup>
-
 </Project>
