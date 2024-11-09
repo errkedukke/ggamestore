@@ -8,17 +8,14 @@
 
   <ItemGroup>
     <Compile Remove="Features\Customer\**" />
-    <Compile Remove="Features\Genres\**" />
     <Compile Remove="Features\OrderDetails\**" />
     <Compile Remove="Features\Orders\**" />
     <Compile Remove="Features\Publishers\**" />
     <EmbeddedResource Remove="Features\Customer\**" />
-    <EmbeddedResource Remove="Features\Genres\**" />
     <EmbeddedResource Remove="Features\OrderDetails\**" />
     <EmbeddedResource Remove="Features\Orders\**" />
     <EmbeddedResource Remove="Features\Publishers\**" />
     <None Remove="Features\Customer\**" />
-    <None Remove="Features\Genres\**" />
     <None Remove="Features\OrderDetails\**" />
     <None Remove="Features\Orders\**" />
     <None Remove="Features\Publishers\**" />

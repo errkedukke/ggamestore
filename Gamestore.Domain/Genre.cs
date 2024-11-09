@@ -8,7 +8,7 @@ public class Genre : BaseEntity
     public string Name { get; set; } = string.Empty;
 
     [ForeignKey(nameof(Parent))]
-    public Guid GenreId { get; set; }
+    public Guid ParentId { get; set; }
 
     public Genre? Parent { get; set; }
 }
