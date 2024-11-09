@@ -1,8 +1,8 @@
-﻿namespace Gamestore.Application.MappingProfiles;
-
-using AutoMapper;
+﻿using AutoMapper;
 using Gamestore.Application.Features.Game.Queries;
 using Gamestore.Domain;
+
+namespace Gamestore.Application.MappingProfiles;
 
 public class GamestoreProfile : Profile
 {

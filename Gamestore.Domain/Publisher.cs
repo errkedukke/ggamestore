@@ -1,6 +1,6 @@
-﻿namespace Gamestore.Domain;
+﻿using Gamestore.Domain.Common;
 
-using Gamestore.Domain.Common;
+namespace Gamestore.Domain;
 
 public class Publisher : BaseEntity
 {

@@ -1,11 +1,10 @@
-﻿namespace Gamestore.Domain.Enums
+﻿namespace Gamestore.Domain.Enums;
+
+public enum Platform
 {
-    public enum Platform
-    {
-        Windows,
-        Linux,
-        Mac,
-        Android,
-        Ios
-    }
+    Windows,
+    Linux,
+    Mac,
+    Android,
+    Ios
 }
