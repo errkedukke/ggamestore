@@ -3,6 +3,6 @@ using Gamestore.Domain;
 
 namespace Gamestore.Application.Contracts.Persistance;
 
-public interface IPublisherRepository : IGenericRepository<Publisher>
+public interface IUserRepository : IGenericRepository<User>
 {
 }

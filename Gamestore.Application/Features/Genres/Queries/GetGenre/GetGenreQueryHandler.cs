@@ -17,7 +17,7 @@ public class GetGenreQueryHandler : IRequestHandler<GetGenreQuery, GenreDto>
 
     public async Task<GenreDto> Handle(GetGenreQuery request, CancellationToken cancellationToken)
     {
-        var genre = await _genreRepository.GetByIdAsync(request.id);
+        var genre = await _genreRepository.GetByIdAsync(request.Id);
         var result = _mapper.Map<GenreDto>(genre);
 
         return result;

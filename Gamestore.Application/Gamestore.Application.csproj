@@ -27,11 +27,4 @@
     <ProjectReference Include="..\Gamestore.Domain\Gamestore.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\OrdersDetails\Commands\" />
-    <Folder Include="Features\OrdersDetails\Queries\GetOrderDetailsByOrderId\" />
-    <Folder Include="Features\OrdersDetails\Queries\GetOrderDetails\" />
-    <Folder Include="Features\OrdersDetails\Queries\GetOrdersDetails\" />
-  </ItemGroup>
-
 </Project>

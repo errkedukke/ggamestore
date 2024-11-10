@@ -2,4 +2,4 @@
 
 namespace Gamestore.Application.Features.Categories.Queries.GetCategory;
 
-public record GetCategoryQuery(Guid id) : IRequest<CategoryDto>;
+public record GetCategoryQuery(Guid Id) : IRequest<CategoryDto>;

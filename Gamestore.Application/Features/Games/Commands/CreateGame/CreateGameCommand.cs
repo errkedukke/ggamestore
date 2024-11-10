@@ -1,7 +1,7 @@
 ﻿using Gamestore.Domain.Enums;
 using MediatR;
 
-namespace Gamestore.Application.Features.Game.Commands.CreateGame
+namespace Gamestore.Application.Features.Games.Commands.CreateGame
 {
     public class CreateGameCommand : IRequest<Guid>
     {

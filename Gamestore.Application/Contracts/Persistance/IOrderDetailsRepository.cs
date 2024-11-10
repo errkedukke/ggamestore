@@ -5,4 +5,5 @@ namespace Gamestore.Application.Contracts.Persistance;
 
 public interface IOrderDetailsRepository : IGenericRepository<OrderDetails>
 {
+    Task<IReadOnlyList<OrderDetails>> GetByOrderIdAsync(Guid OrderId);
 }

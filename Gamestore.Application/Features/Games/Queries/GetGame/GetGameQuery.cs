@@ -2,4 +2,4 @@
 
 namespace Gamestore.Application.Features.Game.Queries.GetGame;
 
-public record GetGameQuery(Guid id) : IRequest<GameDto>;
+public record GetGameQuery(Guid Id) : IRequest<GameDto>;
