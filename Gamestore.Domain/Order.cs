@@ -9,13 +9,13 @@ public class Order : BaseEntity
     [ForeignKey(nameof(Customer))]
     public Guid CustomerId { get; set; }
 
-    public User? Customer { get; set; }
+    public required User Customer { get; set; }
 
-    public DateTime OrderDate { get; set; }
+    public DateTime OrderDate { get; set; } = DateTime.Now;
 
-    public OrderStatus OrderStatus { get; set; }
+    public OrderStatus OrderStatus { get; set; } = OrderStatus.Open;
 
-    public ICollection<OrderDetails> OrderDetails { get; set; } = new List<OrderDetails>();
+    public ICollection<OrderDetails> OrderDetails { get; set; } = [];
 
     public decimal Sum => OrderDetails.Sum(detail => (detail.UnitPrice - detail.Discount) * detail.Quantity);
 }

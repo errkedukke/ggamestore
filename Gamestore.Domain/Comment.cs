@@ -8,12 +8,12 @@ public class Comment : BaseEntity
     [ForeignKey(nameof(Game))]
     public Guid GameId { get; set; }
 
-    public Game? Game { get; set; }
+    public required Game Game { get; set; }
 
     [ForeignKey(nameof(Author))]
-    public Guid? AuthorId { get; set; }
+    public Guid AuthorId { get; set; }
 
-    public User? Author { get; set; }
+    public required User Author { get; set; }
 
     public Guid? ParentCommentId { get; set; }
 
@@ -21,7 +21,7 @@ public class Comment : BaseEntity
 
     public string Body { get; set; } = string.Empty;
 
-    public ICollection<Comment> Replies { get; set; } = new List<Comment>();
+    public ICollection<Comment> Replies { get; set; } = [];
 
     public bool IsBanned { get; set; }
 }

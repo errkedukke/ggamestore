@@ -9,15 +9,12 @@
   <ItemGroup>
     <Compile Remove="Features\Customer\**" />
     <Compile Remove="Features\OrderDetails\**" />
-    <Compile Remove="Features\Orders\**" />
     <Compile Remove="Features\Publishers\**" />
     <EmbeddedResource Remove="Features\Customer\**" />
     <EmbeddedResource Remove="Features\OrderDetails\**" />
-    <EmbeddedResource Remove="Features\Orders\**" />
     <EmbeddedResource Remove="Features\Publishers\**" />
     <None Remove="Features\Customer\**" />
     <None Remove="Features\OrderDetails\**" />
-    <None Remove="Features\Orders\**" />
     <None Remove="Features\Publishers\**" />
   </ItemGroup>
 
@@ -28,6 +25,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Gamestore.Domain\Gamestore.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\OrdersDetails\Commands\" />
+    <Folder Include="Features\OrdersDetails\Queries\GetOrderDetailsByOrderId\" />
+    <Folder Include="Features\OrdersDetails\Queries\GetOrderDetails\" />
+    <Folder Include="Features\OrdersDetails\Queries\GetOrdersDetails\" />
   </ItemGroup>
 
 </Project>

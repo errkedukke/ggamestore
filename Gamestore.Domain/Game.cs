@@ -11,17 +11,17 @@ public class Game : BaseEntity
     [ForeignKey(nameof(Category))]
     public Guid CategoryId { get; set; }
 
-    public Category? Category { get; set; }
+    public required Category Category { get; set; }
 
     [ForeignKey(nameof(Genre))]
     public Guid GenreId { get; set; }
 
-    public Genre? Genre { get; set; }
+    public required Genre Genre { get; set; }
 
     [ForeignKey(nameof(Publisher))]
     public Guid PublisherId { get; set; }
 
-    public Publisher? Publisher { get; set; }
+    public required Publisher Publisher { get; set; }
 
     public Platform Platform { get; set; }
 
