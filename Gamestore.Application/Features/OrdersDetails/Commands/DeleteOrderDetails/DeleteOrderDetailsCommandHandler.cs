@@ -1,4 +1,5 @@
-﻿using Gamestore.Application.Contracts.Persistance;
+﻿using AutoMapper;
+using Gamestore.Application.Contracts.Persistance;
 using MediatR;
 
 namespace Gamestore.Application.Features.OrdersDetails.Commands.DeleteOrderDetails;

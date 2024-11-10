@@ -17,7 +17,7 @@ public class GetGameQueryHandler : IRequestHandler<GetGameQuery, GameDto>
 
     public async Task<GameDto> Handle(GetGameQuery request, CancellationToken cancellationToken)
     {
-        var game = await _gameRepository.GetByIdAsync(request.id);
+        var game = await _gameRepository.GetByIdAsync(request.Id);
         var result = _mapper.Map<GameDto>(game);
 
         return result;

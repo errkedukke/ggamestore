@@ -18,11 +18,6 @@ public class Game : BaseEntity
 
     public required Genre Genre { get; set; }
 
-    [ForeignKey(nameof(Publisher))]
-    public Guid PublisherId { get; set; }
-
-    public required Publisher Publisher { get; set; }
-
     public Platform Platform { get; set; }
 
     public decimal Price { get; set; }
