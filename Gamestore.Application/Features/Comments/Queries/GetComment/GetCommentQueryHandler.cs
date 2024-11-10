@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Gamestore.Application.Contracts.Persistance;
+using Gamestore.Application.Exceptions;
 using MediatR;
 
 namespace Gamestore.Application.Features.Comments.Queries.GetComment;
@@ -18,6 +19,12 @@ public class GetCommentQueryHandler : IRequestHandler<GetCommentQuery, CommentDt
     public async Task<CommentDto> Handle(GetCommentQuery request, CancellationToken cancellationToken)
     {
         var comment = await _commentRepository.GetByIdAsync(request.Id);
+
+        if (comment == null)
+        {
+            throw new NotFoundException(nameof(comment), request.Id);
+        }
+
         var result = _mapper.Map<CommentDto>(comment);
 
         return result;

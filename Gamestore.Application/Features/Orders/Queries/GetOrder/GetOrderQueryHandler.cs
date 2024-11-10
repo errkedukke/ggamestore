@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Gamestore.Application.Contracts.Persistance;
+using Gamestore.Application.Exceptions;
 using Gamestore.Application.Features.OrdersDetails.Queries;
 using MediatR;
 
@@ -21,8 +22,20 @@ public class GetOrderQueryHandler : IRequestHandler<GetOrderQuery, OrderDto>
     public async Task<OrderDto> Handle(GetOrderQuery request, CancellationToken cancellationToken)
     {
         var order = await _orderRepository.GetByIdAsync(request.Id);
-        var result = _mapper.Map<OrderDto>(order);
+
+        if (order == null)
+        {
+            throw new NotFoundException(nameof(order), request.Id);
+        }
+
         var orderDetails = await _orderDetailsRepository.GetByOrderIdAsync(order.Id);
+
+        if (orderDetails == null)
+        {
+            throw new NotFoundException(nameof(orderDetails), order.Id);
+        }
+
+        var result = _mapper.Map<OrderDto>(order);
         var orderDetailsDto = _mapper.Map<List<OrderDetailsDto>>(orderDetails);
 
         result.OrderDetails = orderDetailsDto;

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Gamestore.Application.Contracts.Persistance;
+using Gamestore.Application.Exceptions;
 using MediatR;
 
 namespace Gamestore.Application.Features.Genres.Queries.GetGenre;
@@ -18,6 +19,12 @@ public class GetGenreQueryHandler : IRequestHandler<GetGenreQuery, GenreDto>
     public async Task<GenreDto> Handle(GetGenreQuery request, CancellationToken cancellationToken)
     {
         var genre = await _genreRepository.GetByIdAsync(request.Id);
+
+        if (genre == null)
+        {
+            throw new NotFoundException(nameof(genre), request.Id);
+        }
+
         var result = _mapper.Map<GenreDto>(genre);
 
         return result;
