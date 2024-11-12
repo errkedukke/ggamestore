@@ -5,4 +5,5 @@ namespace Gamestore.Application.Contracts.Persistance;
 
 public interface ICategoryRepository : IGenericRepository<Category>
 {
+    Task<bool> IsCategoryUnique(string categoryName);
 }
