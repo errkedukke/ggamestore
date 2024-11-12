@@ -1,9 +1,10 @@
 ﻿using FluentValidation;
 using Gamestore.Application.Exceptions;
+using MediatR;
 
 namespace Gamestore.Application.Features.Common
 {
-    public abstract class CommandBase<TRequest, TResponse> where TRequest : class
+    public abstract class CommandBase<TRequest, TResponse> where TRequest : IRequest<TResponse>
     {
         protected async Task ValidateAsync(AbstractValidator<TRequest> validator, TRequest request, CancellationToken cancellationToken)
         {
