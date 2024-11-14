@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gamestore.Domain", "Gamesto
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gamestore.Application", "Gamestore.Application\Gamestore.Application.csproj", "{EFABA2ED-4D2C-40F8-A1DA-148FA12CA6DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamestore.Persistence", "Gamestore.Persistence\Gamestore.Persistence.csproj", "{21F002CB-98A0-4707-96B2-27324B0FE6C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gamestore.Persistence", "Gamestore.Persistence\Gamestore.Persistence.csproj", "{21F002CB-98A0-4707-96B2-27324B0FE6C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamestore.Infrastructure", "Gamestore.Infrastructure\Gamestore.Infrastructure.csproj", "{22A2AEA7-C1A8-4DC2-875E-651606028460}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{21F002CB-98A0-4707-96B2-27324B0FE6C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21F002CB-98A0-4707-96B2-27324B0FE6C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21F002CB-98A0-4707-96B2-27324B0FE6C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22A2AEA7-C1A8-4DC2-875E-651606028460}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22A2AEA7-C1A8-4DC2-875E-651606028460}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22A2AEA7-C1A8-4DC2-875E-651606028460}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22A2AEA7-C1A8-4DC2-875E-651606028460}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +57,7 @@ Global
 		{E10F0D1F-8ADF-4957-B5E0-9255B1181680} = {05CDD17B-F03F-4E3D-B8FB-0C6C019B8977}
 		{EFABA2ED-4D2C-40F8-A1DA-148FA12CA6DF} = {05CDD17B-F03F-4E3D-B8FB-0C6C019B8977}
 		{21F002CB-98A0-4707-96B2-27324B0FE6C0} = {43ED42E5-022C-4830-849A-31C770777569}
+		{22A2AEA7-C1A8-4DC2-875E-651606028460} = {43ED42E5-022C-4830-849A-31C770777569}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A956566B-E1D5-4D2F-B625-1AD1682F43A2}

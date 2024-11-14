@@ -17,6 +17,6 @@ public class OrderDetailsRepository : GenericRepository<OrderDetails>, IOrderDet
     public async Task<IReadOnlyList<OrderDetails>> GetByOrderIdAsync(Guid OrderId)
     {
         var query = _dbContext.OrderDetails.Where(x => x.Id == OrderId);
-        return await query.ToListAsync();
+        return await query.AsNoTracking().ToListAsync();
     }
 }
