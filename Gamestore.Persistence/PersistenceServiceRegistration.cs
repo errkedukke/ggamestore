@@ -1,4 +1,7 @@
-﻿using Gamestore.Persistence.DatabaseContext;
+﻿using Gamestore.Application.Contracts.Persistance;
+using Gamestore.Application.Contracts.Persistance.Common;
+using Gamestore.Persistence.DatabaseContext;
+using Gamestore.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +16,16 @@ public static class PersistenceServiceRegistration
         {
             options.UseSqlServer(configuration.GetConnectionString("GamestoreConnectionString"));
         });
+
+        services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<ICommentRepository, CommentRepository>();
+        services.AddScoped<IGameRepository, GameRepository>();
+        services.AddScoped<IGenreRepository, GenreRepository>();
+        services.AddScoped<IOrderDetailsRepository, OrderDetailsRepository>();
+        services.AddScoped<IOrderRepository, OrderRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
 
         return services;
     }
