@@ -1,6 +1,8 @@
 ﻿using Gamestore.Application.Contracts.Email;
+using Gamestore.Application.Contracts.Logging;
 using Gamestore.Domain.Model;
 using Gamestore.Infrastructure.EmailService;
+using Gamestore.Infrastructure.Logging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,10 +13,8 @@ public static class InfrastructureServiceRegistration
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.Configure<EmailOptions>(configuration.GetSection("EmailOptions"));
-
-        // Register the email sender service
         services.AddTransient<IEmailSender, EmailSender>();
-
+        services.AddScoped(typeof(IAppLogger<>), typeof(AppLogger<>));
 
         return services;
     }
