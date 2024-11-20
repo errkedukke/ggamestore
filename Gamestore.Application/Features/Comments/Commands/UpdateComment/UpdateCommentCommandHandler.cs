@@ -12,7 +12,7 @@ public class UpdateCommentCommandHandler : CommandBase<UpdateCommentCommand, Uni
     private readonly ICommentRepository _commentRepository;
     private readonly IMapper _mapper;
 
-    public UpdateCommentCommandHandler(ICommentRepository commentRepository, IMapper mapper, IAppLogger<UpdateCommentCommandHandler> applogger)
+    public UpdateCommentCommandHandler(ICommentRepository commentRepository, IMapper mapper, IAppLogger<UpdateCommentCommand> applogger)
      : base(applogger)
     {
         _commentRepository = commentRepository;
