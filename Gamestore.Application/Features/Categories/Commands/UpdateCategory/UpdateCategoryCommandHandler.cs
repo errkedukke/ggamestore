@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Gamestore.Application.Contracts.Logging;
 using Gamestore.Application.Contracts.Persistance;
 using Gamestore.Application.Features.Common;
 using Gamestore.Domain;
@@ -10,7 +11,7 @@ public class UpdateCategoryCommandHandler : CommandBase<UpdateCategoryCommand, U
     private readonly ICategoryRepository _categoryRepository;
     private readonly IMapper _mapper;
 
-    public UpdateCategoryCommandHandler(ICategoryRepository categoryRepository, IMapper mapper)
+    public UpdateCategoryCommandHandler(ICategoryRepository categoryRepository, IMapper mapper, IAppLogger<UpdateCategoryCommand> logger) : base(logger)
     {
         _categoryRepository = categoryRepository;
         _mapper = mapper;

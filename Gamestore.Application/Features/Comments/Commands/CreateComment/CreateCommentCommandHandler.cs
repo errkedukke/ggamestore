@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Gamestore.Application.Contracts.Logging;
 using Gamestore.Application.Contracts.Persistance;
 using Gamestore.Application.Features.Common;
 using Gamestore.Domain;
@@ -11,7 +12,8 @@ public class CreateCommentCommandHandler : CommandBase<CreateCommentCommand, Gui
     private readonly ICommentRepository _commentRepository;
     private readonly IMapper _mapper;
 
-    public CreateCommentCommandHandler(ICommentRepository commentRepository, IMapper mapper)
+    public CreateCommentCommandHandler(ICommentRepository commentRepository, IMapper mapper, IAppLogger<CreateCommentCommand> logger)
+        : base(logger)
     {
         _commentRepository = commentRepository;
         _mapper = mapper;
