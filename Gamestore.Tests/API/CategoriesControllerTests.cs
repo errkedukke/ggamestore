@@ -1,6 +1,6 @@
 ﻿namespace Gamestore.Tests.API;
 
-public class CategoriesController
+public class CategoriesControllerTests
 {
     [SetUp]
     public void Setup()
