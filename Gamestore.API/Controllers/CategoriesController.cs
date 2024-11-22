@@ -1,5 +1,7 @@
+using Gamestore.Application.Features.Categories.Commands.CreateCategory;
 using Gamestore.Application.Features.Categories.Queries;
 using Gamestore.Application.Features.Categories.Queries.GetCategories;
+using Gamestore.Application.Features.Categories.Queries.GetCategory;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,8 +24,24 @@ public class CategoriesController : ControllerBase
     public async Task<List<CategoryDto>> GetCategories()
     {
         var request = new GetCategoriesQuery();
-        var categories = await _mediator.Send(request);
+        var response = await _mediator.Send(request);
 
-        return categories;
+        return response;
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<CategoryDto>> GetCategory(Guid id)
+    {
+        var request = new GetCategoryQuery(id);
+        var response = await _mediator.Send(request);
+
+        return response;
+    }
+
+    [HttpPost]
+    public async Task<ActionResult> Post(CreateCategoryCommand command)
+    {
+        var response = await _mediator.Send(command);
+        return CreatedAtAction(nameof(GetCategory), new { Id = response });
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Gamestore.Application.Features.Categories.Commands.CreateCategory;
 using Gamestore.Application.Features.Categories.Queries;
 using Gamestore.Application.Features.Comments.Queries;
 using Gamestore.Application.Features.Game.Queries;
@@ -12,6 +13,8 @@ public class GamestoreProfile : Profile
     public GamestoreProfile()
     {
         CreateMap<Category, CategoryDto>().ReverseMap();
+        CreateMap<CreateCategoryCommand, Category>().ReverseMap();
+
         CreateMap<Comment, CommentDto>().ReverseMap();
         CreateMap<Game, GameDto>().ReverseMap();
         CreateMap<Genre, GenreDto>().ReverseMap();
