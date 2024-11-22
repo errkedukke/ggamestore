@@ -18,7 +18,6 @@ public static class PersistenceServiceRegistration
         });
 
         services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<ICommentRepository, CommentRepository>();
         services.AddScoped<IGameRepository, GameRepository>();
