@@ -30,6 +30,8 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<CategoryDto>> GetCategory(Guid id)
     {
         var request = new GetCategoryQuery(id);
@@ -39,6 +41,8 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult> Post(CreateCategoryCommand command)
     {
         var response = await _mediator.Send(command);
