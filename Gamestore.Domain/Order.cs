@@ -15,7 +15,7 @@ public class Order : BaseEntity
 
     public OrderStatus OrderStatus { get; set; } = OrderStatus.Open;
 
-    public ICollection<OrderDetails> OrderDetails { get; set; } = [];
+    public ICollection<OrderDetails> OrderDetails { get; set; } = new List<OrderDetails>();
 
     public decimal Sum => OrderDetails.Sum(detail => (detail.UnitPrice - detail.Discount) * detail.Quantity);
 }

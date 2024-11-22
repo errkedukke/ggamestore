@@ -10,6 +10,11 @@ public class OrderDetails : BaseEntity
 
     public required Game Game { get; set; }
 
+    [ForeignKey(nameof(Order))]
+    public Guid OrderId { get; set; }
+
+    public required Order Order { get; set; }
+
     public decimal UnitPrice { get; set; }
 
     public int Quantity { get; set; } = 1;
