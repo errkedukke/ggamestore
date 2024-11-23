@@ -13,11 +13,11 @@ using Moq;
 
 namespace Gamestore.Tests.API;
 
-public class CategoriesControllerTests
+internal class CategoriesControllerTests
 {
-    public required Mock<ILogger<CategoriesController>> _mockLogger;
-    public required Mock<IMediator> _mockMediator;
-    public required CategoriesController _controller;
+    internal required Mock<ILogger<CategoriesController>> _mockLogger;
+    internal required Mock<IMediator> _mockMediator;
+    internal required CategoriesController _controller;
 
     [SetUp]
     public void Setup()
