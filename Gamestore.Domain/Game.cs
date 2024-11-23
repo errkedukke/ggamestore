@@ -11,12 +11,12 @@ public class Game : BaseEntity
     [ForeignKey(nameof(Category))]
     public Guid CategoryId { get; set; }
 
-    public Category Category { get; set; }
+    public Category? Category { get; set; }
 
     [ForeignKey(nameof(Genre))]
     public Guid GenreId { get; set; }
 
-    public Genre Genre { get; set; }
+    public Genre? Genre { get; set; }
 
     public Platform Platform { get; set; }
 

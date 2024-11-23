@@ -29,9 +29,9 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
         // Relationships
 
         // Customer relationship
-        builder.HasOne(o => o.Customer)
+        builder.HasOne(o => o.User)
             .WithMany() // Assuming no navigation property in User for Orders
-            .HasForeignKey(o => o.CustomerId)
+            .HasForeignKey(o => o.UserId)
             .OnDelete(DeleteBehavior.NoAction); // Prevent cascading delete
 
         // OrderDetails relationship

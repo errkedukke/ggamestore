@@ -6,10 +6,10 @@ namespace Gamestore.Domain;
 
 public class Order : BaseEntity
 {
-    [ForeignKey(nameof(Customer))]
-    public Guid CustomerId { get; set; }
+    [ForeignKey(nameof(User))]
+    public Guid UserId { get; set; }
 
-    public required User Customer { get; set; }
+    public required User User { get; set; }
 
     public DateTime OrderDate { get; set; } = DateTime.Now;
 
