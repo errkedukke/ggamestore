@@ -33,8 +33,8 @@ internal class CategoriesControllerTests
         // Arrange
         var categories = new List<CategoryDto>
         {
-            new CategoryDto { Name = "Category1", Description = "Description1" },
-            new CategoryDto { Name = "Category2", Description = "Description2" }
+            new CategoryDto { CategoryName = "Category1", Description = "Description1" },
+            new CategoryDto { CategoryName = "Category2", Description = "Description2" }
         };
 
         _mockMediator.Setup(m => m.Send(It.IsAny<GetCategoriesQuery>(), default))
@@ -100,7 +100,7 @@ internal class CategoriesControllerTests
     {
         // Arrange
         var categoryId = Guid.NewGuid();
-        var category = new CategoryDto { Name = "LoggedCategory", Description = "ForLogging" };
+        var category = new CategoryDto { CategoryName = "LoggedCategory", Description = "ForLogging" };
         _mockMediator.Setup(m => m.Send(It.Is<GetCategoryQuery>(q => q.Id == categoryId), default))
                      .ReturnsAsync(category);
 
@@ -130,7 +130,7 @@ internal class CategoriesControllerTests
     {
         // Arrange
         var categoryId = Guid.NewGuid();
-        var category = new CategoryDto { Name = "TestCategory", Description = "TestDescription" };
+        var category = new CategoryDto { CategoryName = "TestCategory", Description = "TestDescription" };
         _mockMediator.Setup(m => m.Send(It.Is<GetCategoryQuery>(q => q.Id == categoryId), default))
             .ReturnsAsync(category);
 
