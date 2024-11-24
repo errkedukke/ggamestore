@@ -79,20 +79,21 @@ internal class CategoriesControllerTests
     }
 
     [Test]
-    public async Task GetCategory_ShouldReturnNotFound_WhenCategoryDoesNotExist()
+    public void GetCategory_ShouldReturnNotFound_WhenCategoryDoesNotExist()
     {
         // Arrange
         var categoryId = Guid.NewGuid();
         _mockMediator.Setup(m => m.Send(It.Is<GetCategoryQuery>(q => q.Id == categoryId), default))
             .ReturnsAsync((CategoryDto)null!);
 
-        // Act
-        var result = await _controller.GetCategory(categoryId);
-
-        // Assert
+        // Act & Assert
         Assert.Multiple(() =>
         {
-            Assert.That(result.Result, Is.InstanceOf<NotFoundResult>());
+            var exception = Assert.ThrowsAsync<NotFoundException>(() => _controller.GetCategory(categoryId));
+
+            Assert.That(exception, Is.Not.Null);
+            Assert.That(exception!.Message, Is.EqualTo($"{nameof(GetCategoryQuery)} ({categoryId}) was not found"));
+            Assert.That(exception.InnerException, Is.Null);
         });
     }
 
