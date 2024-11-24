@@ -50,7 +50,7 @@ internal class CategoriesControllerTests
             var okResult = result.Result as OkObjectResult;
 
             Assert.That(result.Result, Is.InstanceOf<OkObjectResult>());
-            Assert.That(okResult, Is.Not.Null, "OkObjectResult should not be null");
+            Assert.That(okResult, Is.Not.Null);
             Assert.That(okResult!.StatusCode, Is.EqualTo(StatusCodes.Status200OK));
             Assert.That(okResult.Value, Is.EqualTo(categories));
         });
