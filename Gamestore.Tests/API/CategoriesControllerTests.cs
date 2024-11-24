@@ -1,4 +1,5 @@
 ﻿using Gamestore.API.Controllers;
+using Gamestore.Application.Exceptions;
 using Gamestore.Application.Features.Categories.Commands.CreateCategory;
 using Gamestore.Application.Features.Categories.Commands.DeleteCategory;
 using Gamestore.Application.Features.Categories.Commands.UpdateCategory;
@@ -251,20 +252,21 @@ internal class CategoriesControllerTests
     }
 
     [Test]
-    public async Task Delete_ShouldReturnNotFound_WhenCategoryToDeleteDoesNotExist()
+    public void Delete_ShouldReturnNotFound_WhenCategoryToDeleteDoesNotExist()
     {
         // Arrange
         var command = new DeleteCategoryCommand { Id = Guid.NewGuid() };
         _mockMediator.Setup(m => m.Send(command, default))
-                     .ThrowsAsync(new KeyNotFoundException("Category not found"));
+            .ThrowsAsync(new NotFoundException(nameof(command), command.Id));
 
-        // Act
-        var result = await _controller.Delete(command);
-
-        // Assert
+        // Act & Assert
         Assert.Multiple(() =>
         {
-            Assert.That(result, Is.InstanceOf<NotFoundResult>());
+            var exception = Assert.ThrowsAsync<NotFoundException>(() => _controller.Delete(command));
+
+            Assert.That(exception, Is.Not.Null);
+            Assert.That(exception!.Message, Is.EqualTo($"{nameof(command)} ({command.Id}) was not found"));
+            Assert.That(exception.InnerException, Is.Null);
         });
     }
 }
