@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Gamestore.Domain;
 
-public class OrderDetails : BaseEntity
+public sealed class OrderDetails : BaseEntity
 {
     [ForeignKey(nameof(Game))]
     public Guid GameId { get; set; }

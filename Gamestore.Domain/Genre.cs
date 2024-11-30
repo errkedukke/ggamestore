@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Gamestore.Domain;
 
-public class Genre : BaseEntity
+public sealed class Genre : BaseEntity
 {
     public string Name { get; set; } = string.Empty;
 

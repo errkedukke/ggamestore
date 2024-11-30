@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Gamestore.Domain;
 
-public class Order : BaseEntity
+public sealed class Order : BaseEntity
 {
     [ForeignKey(nameof(User))]
     public Guid UserId { get; set; }

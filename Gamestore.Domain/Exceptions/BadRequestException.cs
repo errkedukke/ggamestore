@@ -2,7 +2,7 @@
 
 namespace Gamestore.Application.Exceptions;
 
-public class BadRequestException : Exception
+public sealed class BadRequestException : Exception
 {
     public IDictionary<string, string[]> ValidationErrors { get; set; }
 
