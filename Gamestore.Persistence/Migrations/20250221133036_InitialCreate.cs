@@ -107,7 +107,7 @@ namespace Gamestore.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CustomerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     OrderStatus = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -118,8 +118,8 @@ namespace Gamestore.Persistence.Migrations
                 {
                     table.PrimaryKey("PK_Orders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Orders_Users_CustomerId",
-                        column: x => x.CustomerId,
+                        name: "FK_Orders_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id");
                 });
@@ -228,9 +228,9 @@ namespace Gamestore.Persistence.Migrations
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_CustomerId",
+                name: "IX_Orders_UserId",
                 table: "Orders",
-                column: "CustomerId");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_Email",

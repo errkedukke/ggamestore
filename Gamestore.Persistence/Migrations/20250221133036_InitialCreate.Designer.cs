@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gamestore.Persistence.Migrations
 {
     [DbContext(typeof(GamestoreDbContext))]
-    [Migration("20241122182905_InitialCreate")]
+    [Migration("20250221133036_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -207,9 +207,6 @@ namespace Gamestore.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CustomerId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
@@ -227,9 +224,12 @@ namespace Gamestore.Persistence.Migrations
                         .HasColumnType("int")
                         .HasDefaultValue(0);
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Orders", (string)null);
                 });
@@ -378,13 +378,13 @@ namespace Gamestore.Persistence.Migrations
 
             modelBuilder.Entity("Gamestore.Domain.Order", b =>
                 {
-                    b.HasOne("Gamestore.Domain.User", "Customer")
+                    b.HasOne("Gamestore.Domain.User", "User")
                         .WithMany()
-                        .HasForeignKey("CustomerId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.Navigation("Customer");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Gamestore.Domain.OrderDetails", b =>

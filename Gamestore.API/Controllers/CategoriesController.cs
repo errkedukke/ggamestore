@@ -1,4 +1,6 @@
 using Gamestore.Application.Features.Categories.Commands.CreateCategory;
+using Gamestore.Application.Features.Categories.Commands.DeleteCategory;
+using Gamestore.Application.Features.Categories.Commands.UpdateCategory;
 using Gamestore.Application.Features.Categories.Queries;
 using Gamestore.Application.Features.Categories.Queries.GetCategories;
 using Gamestore.Application.Features.Categories.Queries.GetCategory;
@@ -21,12 +23,11 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<List<CategoryDto>> GetCategories()
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<ActionResult<List<CategoryDto>>> GetCategories()
     {
-        var request = new GetCategoriesQuery();
-        var response = await _mediator.Send(request);
-
-        return response;
+        var response = await _mediator.Send(new GetCategoriesQuery());
+        return Ok(response);
     }
 
     [HttpGet("{id}")]
@@ -34,18 +35,35 @@ public class CategoriesController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<CategoryDto>> GetCategory(Guid id)
     {
-        var request = new GetCategoryQuery(id);
-        var response = await _mediator.Send(request);
-
-        return response;
+        var response = await _mediator.Send(new GetCategoryQuery(id));
+        return response != null ? Ok(response) : NotFound();
     }
 
     [HttpPost]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<ActionResult> Post(CreateCategoryCommand command)
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult> CreateCategory(CreateCategoryCommand command)
     {
         var response = await _mediator.Send(command);
-        return CreatedAtAction(nameof(GetCategory), new { Id = response });
+        return CreatedAtAction(nameof(GetCategory), new { id = response }, null);
+    }
+
+    [HttpPut("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> UpdateCategory(Guid id, UpdateCategoryCommand command)
+    {
+        await _mediator.Send(command);
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> DeleteCategory(Guid id)
+    {
+        await _mediator.Send(new DeleteCategoryCommand { Id = id });
+        return NoContent();
     }
 }
