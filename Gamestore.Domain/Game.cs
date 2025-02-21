@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Gamestore.Domain;
 
-public class Game : BaseEntity
+public sealed class Game : BaseEntity
 {
     public string Name { get; set; } = string.Empty;
 

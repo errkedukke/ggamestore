@@ -1,6 +1,6 @@
 ﻿namespace Gamestore.Domain.Model;
 
-public class EmailOptions
+public sealed class EmailOptions
 {
     public string ApiKey { get; set; } = string.Empty;
 

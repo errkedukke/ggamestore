@@ -11,18 +11,19 @@ public class CreateCategoryCommandHandler : CommandBase<CreateCategoryCommand, G
 {
     private readonly ICategoryRepository _categoryRepository;
     private readonly IMapper _mapper;
+    private readonly CreateCategoryCommandValidator _validator;
 
     public CreateCategoryCommandHandler(ICategoryRepository categoryRepository, IMapper mapper, IAppLogger<CreateCategoryCommand> logger)
         : base(logger)
     {
         _categoryRepository = categoryRepository;
         _mapper = mapper;
+        _validator = new CreateCategoryCommandValidator(_categoryRepository);
     }
 
     public async Task<Guid> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
     {
-        var validator = new CreateCategoryCommandValidator(_categoryRepository);
-        await ValidateAsync(validator, request, cancellationToken);
+        await ValidateAsync(_validator, request, cancellationToken);
 
         var categoryToCreate = _mapper.Map<Category>(request);
         await _categoryRepository.CreateAsync(categoryToCreate);

@@ -2,7 +2,7 @@
 
 namespace Gamestore.Domain;
 
-public class User : BaseEntity
+public sealed class User : BaseEntity
 {
     public string Firstname { get; set; } = string.Empty;
 

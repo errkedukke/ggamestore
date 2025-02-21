@@ -1,6 +1,6 @@
 ﻿namespace Gamestore.Domain.Model;
 
-public class EmailMessage
+public sealed class EmailMessage
 {
     public string Reciever { get; set; } = string.Empty;
 
