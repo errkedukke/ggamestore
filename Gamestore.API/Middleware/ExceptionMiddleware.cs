@@ -45,7 +45,7 @@ public class ExceptionMiddleware
                 problem.Title = notFound.Message;
                 problem.Status = (int)statusCode;
                 problem.Detail = notFound.InnerException?.Message;
-                problem.Type = nameof(BadRequestException);
+                problem.Type = nameof(NotFoundException);
                 break;
             default:
                 statusCode = HttpStatusCode.NotFound;
