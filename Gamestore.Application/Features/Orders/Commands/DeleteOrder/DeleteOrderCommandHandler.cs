@@ -23,7 +23,6 @@ public class DeleteOrderCommandHandler : IRequestHandler<DeleteOrderCommand, Uni
         }
 
         await _orderRepository.DeleteAsync(orderToDelete);
-
         return Unit.Value;
     }
 }

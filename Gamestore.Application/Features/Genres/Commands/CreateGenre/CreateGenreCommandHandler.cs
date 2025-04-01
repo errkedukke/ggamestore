@@ -23,7 +23,6 @@ public class CreateGenreCommandHandler : CommandBase<CreateGenreCommand, Guid>, 
     {
         var validator = new CreateGenreCommandValidator();
 
-
         var genreToCreate = _mapper.Map<Genre>(request);
         await _genreRepository.CreateAsync(genreToCreate);
 

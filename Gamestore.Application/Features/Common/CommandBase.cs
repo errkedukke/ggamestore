@@ -5,7 +5,8 @@ using MediatR;
 
 namespace Gamestore.Application.Features.Common;
 
-public abstract class CommandBase<TRequest, TResponse> where TRequest : IRequest<TResponse>
+public abstract class CommandBase<TRequest, TResponse> where TRequest
+    : IRequest<TResponse>
 {
     private readonly IAppLogger<TRequest> _appLogger;
 
