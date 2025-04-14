@@ -26,7 +26,6 @@ public class GetCategoryQueryHandler : IRequestHandler<GetCategoryQuery, Categor
         }
 
         var result = _mapper.Map<CategoryDto>(category);
-
         return result;
     }
 }

@@ -1,3 +1,4 @@
+using Gamestore.API.Middleware;
 using Gamestore.Application;
 using Gamestore.Infrastructure;
 using Gamestore.Persistence;
@@ -39,6 +40,7 @@ public class Program
             app.UseSwaggerUi();
         }
 
+        app.UseMiddleware<ExceptionMiddleware>();
         app.UseHttpsRedirection();
         app.UseAuthorization();
         app.MapControllers();
