@@ -42,7 +42,7 @@ public class UsersController : ControllerBase
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult> CreateGame(CreateUserCommand command)
+    public async Task<ActionResult> CreateUser(CreateUserCommand command)
     {
         var response = await _mediator.Send(command);
         return CreatedAtAction(nameof(GetUser), new { id = response }, null);
@@ -52,7 +52,7 @@ public class UsersController : ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> UpdateGame(Guid id, UpdateUserCommand command)
+    public async Task<IActionResult> UpdateUser(Guid id, UpdateUserCommand command)
     {
         await _mediator.Send(command);
         return NoContent();
@@ -61,7 +61,7 @@ public class UsersController : ControllerBase
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> DeleteGame(Guid id)
+    public async Task<IActionResult> DeleteUser(Guid id)
     {
         await _mediator.Send(new DeleteUserCommand { Id = id });
         return NoContent();
