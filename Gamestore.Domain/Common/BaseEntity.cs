@@ -8,5 +8,5 @@ public abstract class BaseEntity
 
     public DateTime? DateModified { get; set; } = null;
 
-    public bool IsDeleted { get; set; }
+    public bool IsDeleted { get; set; } = false;
 }

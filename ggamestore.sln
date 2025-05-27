@@ -32,6 +32,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamestore.Identity", "Gamestore.Identity\Gamestore.Identity.csproj", "{F660C6BA-B114-4105-9DD6-BA78E278C05E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{4CEA74F1-B5EB-4539-85F5-ED8C6C1D150C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CEA74F1-B5EB-4539-85F5-ED8C6C1D150C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CEA74F1-B5EB-4539-85F5-ED8C6C1D150C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F660C6BA-B114-4105-9DD6-BA78E278C05E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F660C6BA-B114-4105-9DD6-BA78E278C05E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F660C6BA-B114-4105-9DD6-BA78E278C05E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F660C6BA-B114-4105-9DD6-BA78E278C05E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,6 +83,7 @@ Global
 		{22A2AEA7-C1A8-4DC2-875E-651606028460} = {43ED42E5-022C-4830-849A-31C770777569}
 		{6CEE7291-9161-4D2A-A19B-1B550E27640E} = {9A0CC623-9898-48DA-A56B-9C6AE164D358}
 		{4CEA74F1-B5EB-4539-85F5-ED8C6C1D150C} = {5C5A32F5-8A5C-4D9A-98CA-BE7530C66530}
+		{F660C6BA-B114-4105-9DD6-BA78E278C05E} = {43ED42E5-022C-4830-849A-31C770777569}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A956566B-E1D5-4D2F-B625-1AD1682F43A2}

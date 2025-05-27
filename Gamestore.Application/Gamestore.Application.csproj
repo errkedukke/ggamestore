@@ -29,4 +29,8 @@
     <ProjectReference Include="..\Gamestore.Domain\Gamestore.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Contracts\Authorization\" />
+  </ItemGroup>
+
 </Project>
