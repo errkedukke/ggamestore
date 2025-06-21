@@ -4,9 +4,4 @@ using Gamestore.Persistence.DatabaseContext;
 
 namespace Gamestore.Persistence.Repositories;
 
-public class GenreRepository : GenericRepository<Genre>, IGenreRepository
-{
-    public GenreRepository(GamestoreDbContext dbContext) : base(dbContext)
-    {
-    }
-}
+public class GenreRepository(GamestoreDbContext dbContext) : GenericRepository<Genre>(dbContext), IGenreRepository;

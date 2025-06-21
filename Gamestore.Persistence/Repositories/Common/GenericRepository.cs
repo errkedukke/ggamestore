@@ -5,42 +5,35 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gamestore.Persistence.Repositories;
 
-public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+public class GenericRepository<T>(GamestoreDbContext dbContext) : IGenericRepository<T> where T : BaseEntity
 {
-    private readonly GamestoreDbContext _dbContext;
-
-    public GenericRepository(GamestoreDbContext dbContext)
-    {
-        _dbContext = dbContext;
-    }
-
     public async Task CreateAsync(T entity)
     {
-        await _dbContext.AddAsync(entity);
-        await _dbContext.SaveChangesAsync();
+        await dbContext.AddAsync(entity);
+        await dbContext.SaveChangesAsync();
     }
 
     public async Task DeleteAsync(T entity)
     {
-        _dbContext.Set<T>().Remove(entity);
-        await _dbContext.SaveChangesAsync();
+        dbContext.Set<T>().Remove(entity);
+        await dbContext.SaveChangesAsync();
     }
 
     public async Task<IReadOnlyList<T>> GetAsync()
     {
-        return await _dbContext.Set<T>().AsNoTracking().ToListAsync();
+        return await dbContext.Set<T>().AsNoTracking().ToListAsync();
     }
 
     public async Task<T> GetByIdAsync(Guid id)
     {
-        var result = await _dbContext.Set<T>().AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+        var result = await dbContext.Set<T>().AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
         return result!;
     }
 
     public async Task UpdateAsync(T entity)
     {
-        _dbContext.Update(entity);
-        _dbContext.Entry(entity).State = EntityState.Modified;
-        await _dbContext.SaveChangesAsync();
+        dbContext.Update(entity);
+        dbContext.Entry(entity).State = EntityState.Modified;
+        await dbContext.SaveChangesAsync();
     }
 }
