@@ -46,8 +46,8 @@ public class AuthService : IAuthService
         {
             Id = Guid.Parse(user.Id),
             Token = new JwtSecurityTokenHandler().WriteToken(token),
-            Email = user.Email,
-            UserName = user.UserName,
+            Email = user.Email!,
+            UserName = user.UserName!,
         };
 
         return respone;
@@ -83,8 +83,35 @@ public class AuthService : IAuthService
         return jwtSecurityToken;
     }
 
-    public Task<RegistrationResponse> Register(RegistrationRequest request)
+    public async Task<RegistrationResponse> Register(RegistrationRequest request)
     {
-        throw new NotImplementedException();
+        var user = new Models.ApplicationUser
+        {
+            Email = request.EmailAddress,
+            Firstname = request.FirstName,
+            Lastname = request.LastName,
+            UserName = request.Username,
+            EmailConfirmed = true,
+        };
+
+        var result = await _userManager.CreateAsync(user, request.Password);
+
+        if (result.Succeeded)
+        {
+            await _userManager.AddToRoleAsync(user, "User");
+            return new RegistrationResponse() { UserId = Guid.Parse(user.Id) };
+        }
+        else
+        {
+            var stringBuilder = new StringBuilder();
+
+            foreach (var error in result.Errors)
+            {
+                stringBuilder.AppendFormat($"{error.Description}\n");
+            }
+
+            throw new BadRequestException($"{stringBuilder}");
+        }
+
     }
 }
