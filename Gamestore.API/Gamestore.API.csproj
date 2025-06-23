@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.4">
       <PrivateAssets>all</PrivateAssets>
@@ -22,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Gamestore.Application\Gamestore.Application.csproj" />
+    <ProjectReference Include="..\Gamestore.Identity\Gamestore.Identity.csproj" />
     <ProjectReference Include="..\Gamestore.Infrastructure\Gamestore.Infrastructure.csproj" />
     <ProjectReference Include="..\Gamestore.Persistence\Gamestore.Persistence.csproj" />
   </ItemGroup>

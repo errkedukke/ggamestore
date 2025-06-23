@@ -4,13 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gamestore.Identity.DbContext;
 
-public class GamestoreIdentityDbContext : IdentityDbContext<ApplicationUser>
+public class GamestoreIdentityDbContext(DbContextOptions<GamestoreIdentityDbContext> options)
+    : IdentityDbContext<ApplicationUser>(options)
 {
-    public GamestoreIdentityDbContext(DbContextOptions<GamestoreIdentityDbContext> options)
-        : base(options)
-    {
-    }
-
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
