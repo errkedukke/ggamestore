@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gamestore.Identity.Migrations
 {
     [DbContext(typeof(GamestoreIdentityDbContext))]
-    [Migration("20250623224559_InitialIdentityCreate")]
+    [Migration("20250624101932_InitialIdentityCreate")]
     partial class InitialIdentityCreate
     {
         /// <inheritdoc />
@@ -102,7 +102,7 @@ namespace Gamestore.Identity.Migrations
                         {
                             Id = "c99e2f6b-f470-4c4c-a347-9653d6c3870a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "58ec1881-aa6a-4855-8021-7c4ff2ffc565",
+                            ConcurrencyStamp = "1fdb4a52-b4dd-4575-b867-5eccaa151cf9",
                             Email = "user@example.com",
                             EmailConfirmed = true,
                             Firstname = "User",
@@ -112,7 +112,7 @@ namespace Gamestore.Identity.Migrations
                             NormalizedUserName = "USER",
                             PasswordHash = "AQAAAAEAACcQAAAAEGGLGr1PBvJGoRcr0GfGlPlPtM5k6FtK8uXU+uS8THl9dB6FzBTJkaEkVcuRNe+QkA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4c2d20d4-ee87-40cb-a6f6-61ff84d09093",
+                            SecurityStamp = "84769241-a049-4770-92be-b9848a106367",
                             TwoFactorEnabled = false,
                             UserName = "user"
                         },
@@ -120,7 +120,7 @@ namespace Gamestore.Identity.Migrations
                         {
                             Id = "3e5f8b62-2c61-4c09-b7c1-5e3f6de79f1c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "653afce3-8f0c-440f-873c-285ff9ec6d6b",
+                            ConcurrencyStamp = "1fdb4a52-b4dd-4575-b867-5eccaa151cf9",
                             Email = "admin@example.com",
                             EmailConfirmed = true,
                             Firstname = "System",
@@ -130,7 +130,7 @@ namespace Gamestore.Identity.Migrations
                             NormalizedUserName = "ADMIN",
                             PasswordHash = "AQAAAAEAACcQAAAAEGGLGr1PBvJGoRcr0GfGlPlPtM5k6FtK8uXU+uS8THl9dB6FzBTJkaEkVcuRNe+QkA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "daf56009-ab1b-4d08-b94a-77e8395714ab",
+                            SecurityStamp = "84769241-a049-4770-92be-b9848a106367",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });

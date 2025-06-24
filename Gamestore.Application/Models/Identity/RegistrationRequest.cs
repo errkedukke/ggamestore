@@ -12,7 +12,7 @@ public class RegistrationRequest
 
     [Required]
     [EmailAddress]
-    public string EmailAddress { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
 
     [Required]
     [MinLength(6)]

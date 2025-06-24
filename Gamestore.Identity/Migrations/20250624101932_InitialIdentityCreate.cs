@@ -174,8 +174,8 @@ namespace Gamestore.Identity.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "Firstname", "Lastname", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "3e5f8b62-2c61-4c09-b7c1-5e3f6de79f1c", 0, "653afce3-8f0c-440f-873c-285ff9ec6d6b", "admin@example.com", true, "System", "Administrator", false, null, "ADMIN@EXAMPLE.COM", "ADMIN", "AQAAAAEAACcQAAAAEGGLGr1PBvJGoRcr0GfGlPlPtM5k6FtK8uXU+uS8THl9dB6FzBTJkaEkVcuRNe+QkA==", null, false, "daf56009-ab1b-4d08-b94a-77e8395714ab", false, "admin" },
-                    { "c99e2f6b-f470-4c4c-a347-9653d6c3870a", 0, "58ec1881-aa6a-4855-8021-7c4ff2ffc565", "user@example.com", true, "User", "Regularuser", false, null, "USER@EXAMPLE.COM", "USER", "AQAAAAEAACcQAAAAEGGLGr1PBvJGoRcr0GfGlPlPtM5k6FtK8uXU+uS8THl9dB6FzBTJkaEkVcuRNe+QkA==", null, false, "4c2d20d4-ee87-40cb-a6f6-61ff84d09093", false, "user" }
+                    { "3e5f8b62-2c61-4c09-b7c1-5e3f6de79f1c", 0, "1fdb4a52-b4dd-4575-b867-5eccaa151cf9", "admin@example.com", true, "System", "Administrator", false, null, "ADMIN@EXAMPLE.COM", "ADMIN", "AQAAAAEAACcQAAAAEGGLGr1PBvJGoRcr0GfGlPlPtM5k6FtK8uXU+uS8THl9dB6FzBTJkaEkVcuRNe+QkA==", null, false, "84769241-a049-4770-92be-b9848a106367", false, "admin" },
+                    { "c99e2f6b-f470-4c4c-a347-9653d6c3870a", 0, "1fdb4a52-b4dd-4575-b867-5eccaa151cf9", "user@example.com", true, "User", "Regularuser", false, null, "USER@EXAMPLE.COM", "USER", "AQAAAAEAACcQAAAAEGGLGr1PBvJGoRcr0GfGlPlPtM5k6FtK8uXU+uS8THl9dB6FzBTJkaEkVcuRNe+QkA==", null, false, "84769241-a049-4770-92be-b9848a106367", false, "user" }
                 });
 
             migrationBuilder.InsertData(

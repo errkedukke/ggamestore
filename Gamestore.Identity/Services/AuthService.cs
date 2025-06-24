@@ -87,7 +87,7 @@ public class AuthService : IAuthService
     {
         var user = new Models.ApplicationUser
         {
-            Email = request.EmailAddress,
+            Email = request.Email,
             Firstname = request.FirstName,
             Lastname = request.LastName,
             UserName = request.Username,
