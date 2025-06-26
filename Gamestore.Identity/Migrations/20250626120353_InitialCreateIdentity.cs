@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Gamestore.Identity.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialIdentityCreate : Migration
+    public partial class InitialCreateIdentity : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -174,8 +174,8 @@ namespace Gamestore.Identity.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "Firstname", "Lastname", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "3e5f8b62-2c61-4c09-b7c1-5e3f6de79f1c", 0, "1fdb4a52-b4dd-4575-b867-5eccaa151cf9", "admin@example.com", true, "System", "Administrator", false, null, "ADMIN@EXAMPLE.COM", "ADMIN", "AQAAAAEAACcQAAAAEGGLGr1PBvJGoRcr0GfGlPlPtM5k6FtK8uXU+uS8THl9dB6FzBTJkaEkVcuRNe+QkA==", null, false, "84769241-a049-4770-92be-b9848a106367", false, "admin" },
-                    { "c99e2f6b-f470-4c4c-a347-9653d6c3870a", 0, "1fdb4a52-b4dd-4575-b867-5eccaa151cf9", "user@example.com", true, "User", "Regularuser", false, null, "USER@EXAMPLE.COM", "USER", "AQAAAAEAACcQAAAAEGGLGr1PBvJGoRcr0GfGlPlPtM5k6FtK8uXU+uS8THl9dB6FzBTJkaEkVcuRNe+QkA==", null, false, "84769241-a049-4770-92be-b9848a106367", false, "user" }
+                    { "3e5f8b62-2c61-4c09-b7c1-5e3f6de79f1c", 0, "1fdb4a52-b4dd-4575-b867-5eccaa151cf9", "admin@example.com", true, "System", "Administrator", false, null, "ADMIN@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAEK+Oj+7hQWcp96oKmNIRSN2GNvsgHCGh7FKOwO7tqV+RPiVizICDLovbibhTgV8fFg==", null, false, "84769241-a049-4770-92be-b9848a106367", false, "admin" },
+                    { "c99e2f6b-f470-4c4c-a347-9653d6c3870a", 0, "1fdb4a52-b4dd-4575-b867-5eccaa151cf9", "user@example.com", true, "User", "Regularuser", false, null, "USER@EXAMPLE.COM", "USER", "AQAAAAIAAYagAAAAEK+Oj+7hQWcp96oKmNIRSN2GNvsgHCGh7FKOwO7tqV+RPiVizICDLovbibhTgV8fFg==", null, false, "84769241-a049-4770-92be-b9848a106367", false, "user" }
                 });
 
             migrationBuilder.InsertData(

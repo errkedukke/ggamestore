@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gamestore.Identity.Migrations
 {
     [DbContext(typeof(GamestoreIdentityDbContext))]
-    [Migration("20250624101932_InitialIdentityCreate")]
-    partial class InitialIdentityCreate
+    [Migration("20250626120353_InitialCreateIdentity")]
+    partial class InitialCreateIdentity
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -110,7 +110,7 @@ namespace Gamestore.Identity.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@EXAMPLE.COM",
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGGLGr1PBvJGoRcr0GfGlPlPtM5k6FtK8uXU+uS8THl9dB6FzBTJkaEkVcuRNe+QkA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEK+Oj+7hQWcp96oKmNIRSN2GNvsgHCGh7FKOwO7tqV+RPiVizICDLovbibhTgV8fFg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "84769241-a049-4770-92be-b9848a106367",
                             TwoFactorEnabled = false,
@@ -128,7 +128,7 @@ namespace Gamestore.Identity.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGGLGr1PBvJGoRcr0GfGlPlPtM5k6FtK8uXU+uS8THl9dB6FzBTJkaEkVcuRNe+QkA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEK+Oj+7hQWcp96oKmNIRSN2GNvsgHCGh7FKOwO7tqV+RPiVizICDLovbibhTgV8fFg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "84769241-a049-4770-92be-b9848a106367",
                             TwoFactorEnabled = false,

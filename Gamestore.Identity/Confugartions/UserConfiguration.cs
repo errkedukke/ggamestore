@@ -1,4 +1,5 @@
 ﻿using Gamestore.Identity.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -8,6 +9,9 @@ public class UserConfiguration : IEntityTypeConfiguration<ApplicationUser>
 {
     public void Configure(EntityTypeBuilder<ApplicationUser> builder)
     {
+        var hasher = new PasswordHasher<ApplicationUser>();
+        // Password!123
+
         builder.HasData(
              new ApplicationUser
              {
@@ -19,7 +23,7 @@ public class UserConfiguration : IEntityTypeConfiguration<ApplicationUser>
                  Email = "user@example.com",
                  NormalizedEmail = "USER@EXAMPLE.COM",
                  EmailConfirmed = true,
-                 PasswordHash = "AQAAAAEAACcQAAAAEGGLGr1PBvJGoRcr0GfGlPlPtM5k6FtK8uXU+uS8THl9dB6FzBTJkaEkVcuRNe+QkA==",
+                 PasswordHash = "AQAAAAIAAYagAAAAEK+Oj+7hQWcp96oKmNIRSN2GNvsgHCGh7FKOwO7tqV+RPiVizICDLovbibhTgV8fFg==",
                  ConcurrencyStamp = "1fdb4a52-b4dd-4575-b867-5eccaa151cf9",
                  SecurityStamp = "84769241-a049-4770-92be-b9848a106367"
              },
@@ -33,7 +37,7 @@ public class UserConfiguration : IEntityTypeConfiguration<ApplicationUser>
                 Email = "admin@example.com",
                 NormalizedEmail = "ADMIN@EXAMPLE.COM",
                 EmailConfirmed = true,
-                PasswordHash = "AQAAAAEAACcQAAAAEGGLGr1PBvJGoRcr0GfGlPlPtM5k6FtK8uXU+uS8THl9dB6FzBTJkaEkVcuRNe+QkA==",
+                PasswordHash = "AQAAAAIAAYagAAAAEK+Oj+7hQWcp96oKmNIRSN2GNvsgHCGh7FKOwO7tqV+RPiVizICDLovbibhTgV8fFg==",
                 ConcurrencyStamp = "1fdb4a52-b4dd-4575-b867-5eccaa151cf9",
                 SecurityStamp = "84769241-a049-4770-92be-b9848a106367"
             }
