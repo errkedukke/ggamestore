@@ -34,6 +34,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamestore.Identity", "Gamestore.Identity\Gamestore.Identity.csproj", "{F660C6BA-B114-4105-9DD6-BA78E278C05E}"
 EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Gamestore.UI", "Gamestore.UI\Gamestore.UI.esproj", "{F1B6F677-B1C1-ACA7-F356-E23E84DF6F0C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +70,12 @@ Global
 		{F660C6BA-B114-4105-9DD6-BA78E278C05E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F660C6BA-B114-4105-9DD6-BA78E278C05E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F660C6BA-B114-4105-9DD6-BA78E278C05E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1B6F677-B1C1-ACA7-F356-E23E84DF6F0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1B6F677-B1C1-ACA7-F356-E23E84DF6F0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1B6F677-B1C1-ACA7-F356-E23E84DF6F0C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F1B6F677-B1C1-ACA7-F356-E23E84DF6F0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1B6F677-B1C1-ACA7-F356-E23E84DF6F0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1B6F677-B1C1-ACA7-F356-E23E84DF6F0C}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +92,7 @@ Global
 		{6CEE7291-9161-4D2A-A19B-1B550E27640E} = {9A0CC623-9898-48DA-A56B-9C6AE164D358}
 		{4CEA74F1-B5EB-4539-85F5-ED8C6C1D150C} = {5C5A32F5-8A5C-4D9A-98CA-BE7530C66530}
 		{F660C6BA-B114-4105-9DD6-BA78E278C05E} = {43ED42E5-022C-4830-849A-31C770777569}
+		{F1B6F677-B1C1-ACA7-F356-E23E84DF6F0C} = {55855A9D-D655-4AC4-914B-F6DC443D9D84}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A956566B-E1D5-4D2F-B625-1AD1682F43A2}
