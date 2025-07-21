@@ -6,6 +6,7 @@ A full-stack web application for managing and browsing digital games. Built with
 
 ## 🏗 Project Structure
 
+```
 src/
 ├── API/
 │ └── Gamestore.API # ASP.NET Core Web API entry point
@@ -18,6 +19,7 @@ src/
 │ └── Gamestore.Persistence # EF Core DbContext + Repositories
 └── UI/
 └── Gamestore.UI # Angular 17+ frontend (standalone components + Tailwind)
+```
 ---
 
 ## 🖥 Technologies Used
