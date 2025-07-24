@@ -23,7 +23,9 @@ public class UpdateCategoryCommandHandler : CommandBase<UpdateCategoryCommand, U
     {
         await ValidateAsync(_validator, request, cancellationToken);
 
+        var category = await _categoryRepository.GetByIdAsync(request.Id, cancellationToken);
         var categoryToUpdate = _mapper.Map<Category>(request);
+
         await _categoryRepository.UpdateAsync(categoryToUpdate);
 
         return Unit.Value;

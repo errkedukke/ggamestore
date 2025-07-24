@@ -42,17 +42,17 @@ public class GamesController : ControllerBase
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult> CreateGame(CreateGameCommand command)
+    public async Task<ActionResult> CreateGame([FromBody] CreateGameCommand command)
     {
         var response = await _mediator.Send(command);
-        return CreatedAtAction(nameof(GetGame), new { id = response }, null);
+        return CreatedAtAction(nameof(GetGame), new { id = response }, response);
     }
 
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> UpdateGame(Guid id, UpdateGameCommand command)
+    public async Task<IActionResult> UpdateGame(Guid id, [FromBody] UpdateGameCommand command)
     {
         await _mediator.Send(command);
         return NoContent();

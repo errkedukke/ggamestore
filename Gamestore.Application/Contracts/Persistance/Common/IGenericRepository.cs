@@ -4,13 +4,13 @@ namespace Gamestore.Application.Contracts.Persistance.Common;
 
 public interface IGenericRepository<T> where T : BaseEntity
 {
-    Task<IReadOnlyList<T>> GetAsync();
+    Task<IReadOnlyList<T>> GetAsync(CancellationToken cancellationToken = default);
 
-    Task<T> GetByIdAsync(Guid id);
+    Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
 
-    Task CreateAsync(T entity);
+    Task CreateAsync(T entity, CancellationToken cancellationToken = default);
 
-    Task UpdateAsync(T entity);
+    Task UpdateAsync(T entity, CancellationToken cancellationToken = default);
 
-    Task DeleteAsync(T entity);
+    Task DeleteAsync(T entity, CancellationToken cancellationToken = default);
 }
