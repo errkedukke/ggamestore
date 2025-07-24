@@ -158,7 +158,7 @@ export class GameCarousel {
   ];
 
   currentPage = 0;
-  pageSize = 6;
+  pageSize = 3;
 
   get paginatedGames(): Game[] {
     const start = this.currentPage * this.pageSize;
