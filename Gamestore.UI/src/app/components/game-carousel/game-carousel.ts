@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Game } from '../../models/game';
-import { GameService } from '../../services/game.service';
+import { GameCarouselService } from './game-carousel.service';
+import { paginate } from '../../utils/pagination';
 
 @Component({
   selector: 'app-game-carousel',
@@ -10,34 +11,53 @@ import { GameService } from '../../services/game.service';
   templateUrl: './game-carousel.html',
   styleUrl: './game-carousel.css',
 })
-export class GameCarousel {
+export class GameCarousel implements OnInit {
+  @Input() pageSize = 3;
+  @Input() title = 'Featured Games';
+
   games: Game[] = [];
   currentPage = 0;
-  pageSize = 3;
 
-  constructor(private gameService: GameService) {}
+  isLoading = false;
+  errorMessage: string | null = null;
+
+  constructor(private carouselService: GameCarouselService) {}
 
   ngOnInit(): void {
-    this.gameService.getGames().subscribe({
-      next: (data) => (this.games = data),
-      error: (err) => console.error('Failed to fetch games:', err),
+    this.loadGames();
+  }
+
+  loadGames(): void {
+    this.isLoading = true;
+    this.carouselService.fetchGames().subscribe({
+      next: (data) => {
+        this.games = data;
+        this.isLoading = false;
+      },
+      error: () => {
+        this.errorMessage = 'Failed to load games.';
+        this.isLoading = false;
+      },
     });
   }
 
   get paginatedGames(): Game[] {
-    const start = this.currentPage * this.pageSize;
-    return this.games.slice(start, start + this.pageSize);
+    return paginate(this.games, this.currentPage, this.pageSize);
   }
 
-  nextPage() {
+  nextPage(): void {
     if ((this.currentPage + 1) * this.pageSize < this.games.length) {
       this.currentPage++;
     }
   }
 
-  prevPage() {
+  prevPage(): void {
     if (this.currentPage > 0) {
       this.currentPage--;
     }
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.games.length / this.pageSize);
   }
 }

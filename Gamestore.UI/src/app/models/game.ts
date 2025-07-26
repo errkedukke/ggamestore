@@ -5,4 +5,6 @@ export interface Game {
   discontinued: boolean;
   releaseDate: string;
   imageKey: string;
+  genre: string;
+  category: string;
 }

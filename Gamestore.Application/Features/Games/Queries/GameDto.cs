@@ -15,4 +15,8 @@ public class GameDto
     public DateTime ReleaseDate { get; set; }
 
     public string ImageKey { get; set; } = string.Empty;
+
+    public string Genre { get; set; } = string.Empty;
+
+    public string Category { get; set; } = string.Empty;
 }
