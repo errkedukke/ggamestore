@@ -4,9 +4,5 @@ using Gamestore.Persistence.DatabaseContext;
 
 namespace Gamestore.Persistence.Repositories;
 
-public class GameRepository : GenericRepository<Game>, IGameRepository
-{
-    public GameRepository(GamestoreDbContext dbContext) : base(dbContext)
-    {
-    }
-}
+public class GameRepository(GamestoreDbContext dbContext)
+    : GenericRepository<Game>(dbContext), IGameRepository;

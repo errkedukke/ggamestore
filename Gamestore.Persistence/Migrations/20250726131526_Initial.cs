@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Gamestore.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -33,7 +33,6 @@ namespace Gamestore.Persistence.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    ParentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateModified = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
@@ -41,11 +40,6 @@ namespace Gamestore.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Genres", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Genres_Genres_ParentId",
-                        column: x => x.ParentId,
-                        principalTable: "Genres",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -211,11 +205,6 @@ namespace Gamestore.Persistence.Migrations
                 name: "IX_Games_GenreId",
                 table: "Games",
                 column: "GenreId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Genres_ParentId",
-                table: "Genres",
-                column: "ParentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderDetails_GameId",

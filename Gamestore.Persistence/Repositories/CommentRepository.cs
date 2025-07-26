@@ -4,9 +4,5 @@ using Gamestore.Persistence.DatabaseContext;
 
 namespace Gamestore.Persistence.Repositories;
 
-public class CommentRepository : GenericRepository<Comment>, ICommentRepository
-{
-    public CommentRepository(GamestoreDbContext dbContext) : base(dbContext)
-    {
-    }
-}
+public class CommentRepository(GamestoreDbContext dbContext)
+    : GenericRepository<Comment>(dbContext), ICommentRepository;

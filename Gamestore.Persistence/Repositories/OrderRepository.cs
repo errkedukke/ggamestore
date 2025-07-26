@@ -4,9 +4,5 @@ using Gamestore.Persistence.DatabaseContext;
 
 namespace Gamestore.Persistence.Repositories;
 
-public class OrderRepository : GenericRepository<Order>, IOrderRepository
-{
-    public OrderRepository(GamestoreDbContext dbContext) : base(dbContext)
-    {
-    }
-}
+public class OrderRepository(GamestoreDbContext dbContext)
+    : GenericRepository<Order>(dbContext), IOrderRepository;

@@ -5,18 +5,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gamestore.Persistence.Repositories;
 
-public class OrderDetailsRepository : GenericRepository<OrderDetails>, IOrderDetailsRepository
+public class OrderDetailsRepository(GamestoreDbContext dbContext)
+    : GenericRepository<OrderDetails>(dbContext), IOrderDetailsRepository
 {
-    private readonly GamestoreDbContext _dbContext;
-
-    public OrderDetailsRepository(GamestoreDbContext dbContext) : base(dbContext)
-    {
-        _dbContext = dbContext;
-    }
-
     public async Task<IReadOnlyList<OrderDetails>> GetByOrderIdAsync(Guid OrderId)
     {
-        var query = _dbContext.OrderDetails.Where(x => x.Id == OrderId);
+        var query = dbContext.OrderDetails.Where(x => x.Id == OrderId);
         return await query.AsNoTracking().ToListAsync();
     }
 }

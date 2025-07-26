@@ -15,10 +15,5 @@ public class GenreConfiguration : IEntityTypeConfiguration<Genre>
         builder.Property(g => g.Name)
             .IsRequired()
             .HasMaxLength(100);
-
-        builder.HasOne(g => g.Parent)
-            .WithMany()
-            .HasForeignKey(g => g.ParentId)
-            .OnDelete(DeleteBehavior.NoAction);
     }
 }

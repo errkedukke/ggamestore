@@ -26,4 +26,6 @@ public class UpdateGameCommand : IRequest<Unit>
     public DateTime ReleaseDate { get; set; }
 
     public string Description { get; set; } = string.Empty;
+
+    public string ImageKey { get; set; } = string.Empty;
 }

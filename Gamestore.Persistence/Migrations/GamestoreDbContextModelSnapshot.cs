@@ -188,12 +188,7 @@ namespace Gamestore.Persistence.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<Guid>("ParentId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ParentId");
 
                     b.ToTable("Genres", (string)null);
                 });
@@ -360,17 +355,6 @@ namespace Gamestore.Persistence.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("Genre");
-                });
-
-            modelBuilder.Entity("Gamestore.Domain.Genre", b =>
-                {
-                    b.HasOne("Gamestore.Domain.Genre", "Parent")
-                        .WithMany()
-                        .HasForeignKey("ParentId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("Parent");
                 });
 
             modelBuilder.Entity("Gamestore.Domain.Order", b =>

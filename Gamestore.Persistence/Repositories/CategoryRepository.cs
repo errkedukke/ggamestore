@@ -5,18 +5,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gamestore.Persistence.Repositories;
 
-public class CategoryRepository : GenericRepository<Category>, ICategoryRepository
+public class CategoryRepository(GamestoreDbContext dbContext)
+    : GenericRepository<Category>(dbContext), ICategoryRepository
 {
-    private readonly GamestoreDbContext _dbContext;
-
-    public CategoryRepository(GamestoreDbContext dbContext) : base(dbContext)
-    {
-        _dbContext = dbContext;
-    }
-
     public async Task<bool> IsCategoryUnique(string categoryName)
     {
         var normalized = categoryName.Trim().ToLower();
-        return !await _dbContext.Categories.AsNoTracking().AnyAsync(c => c.CategoryName.ToLower().Trim() == normalized);
+        return !await dbContext.Categories.AsNoTracking().AnyAsync(c => c.CategoryName.ToLower().Trim() == normalized);
     }
 }

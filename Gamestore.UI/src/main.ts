@@ -8,6 +8,7 @@ import { GameDetail } from './app/pages/game-detail/game-detail';
 import { Cart } from './app/pages/cart/cart';
 import { Checkout } from './app/pages/checkout/checkout';
 import { Error } from './app/pages/error/error';
+import { provideHttpClient } from '@angular/common/http';
 
 const routes: Routes = [
   { path: '', component: Home },
@@ -18,5 +19,8 @@ const routes: Routes = [
 ];
 
 bootstrapApplication(App, {
-  providers: [importProvidersFrom(RouterModule.forRoot(routes))],
+  providers: [
+    importProvidersFrom(RouterModule.forRoot(routes)),
+    provideHttpClient(),
+  ],
 }).catch((err) => console.error(err));
