@@ -4,25 +4,15 @@ using MediatR;
 
 namespace Gamestore.Application.Features.Categories.Commands.DeleteCategory;
 
-public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryCommand, Unit>
+public class DeleteCategoryCommandHandler(ICategoryRepository categoryRepository)
+    : IRequestHandler<DeleteCategoryCommand, Unit>
 {
-    private readonly ICategoryRepository _categoryRepository;
-
-    public DeleteCategoryCommandHandler(ICategoryRepository categoryRepository)
-    {
-        _categoryRepository = categoryRepository;
-    }
-
     public async Task<Unit> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
     {
-        var categoryToDelete = await _categoryRepository.GetByIdAsync(request.Id);
+        var categoryToDelete = await categoryRepository.GetByIdAsync(request.Id, cancellationToken)
+            ?? throw new NotFoundException($"The category with the ID: {request.Id} was not found.");
 
-        if (categoryToDelete == null)
-        {
-            throw new NotFoundException(nameof(categoryToDelete), request.Id);
-        }
-
-        await _categoryRepository.DeleteAsync(categoryToDelete);
+        await categoryRepository.DeleteAsync(categoryToDelete, cancellationToken);
 
         return Unit.Value;
     }

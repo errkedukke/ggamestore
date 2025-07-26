@@ -5,6 +5,8 @@ namespace Gamestore.Application.Features.Games.Commands.UpdateGame;
 
 public class UpdateGameCommand : IRequest<Unit>
 {
+    public Guid Id { get; set; }
+
     public string Name { get; set; } = string.Empty;
 
     public Guid CategoryId { get; set; }

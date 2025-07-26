@@ -14,13 +14,9 @@ public class GenericRepository<T>(GamestoreDbContext dbContext)
         await dbContext.SaveChangesAsync(cancellationToken);
     }
 
-    // Would be a huge plus if there would be a configurable option for this method, would you want
-    // a soft delete or hard delete on your entities
     public async Task DeleteAsync(T entity, CancellationToken cancellationToken = default)
     {
-        entity.IsDeleted = true;
-        dbContext.Entry(entity).Property(e => e.IsDeleted).IsModified = true;
-
+        dbContext.Set<T>().Remove(entity);
         await dbContext.SaveChangesAsync(cancellationToken);
     }
 

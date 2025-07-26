@@ -16,6 +16,7 @@ public class CategoryRepository : GenericRepository<Category>, ICategoryReposito
 
     public async Task<bool> IsCategoryUnique(string categoryName)
     {
-        return !await _dbContext.Categories.AsNoTracking().AnyAsync(c => c.CategoryName == categoryName);
+        var normalized = categoryName.Trim().ToLower();
+        return !await _dbContext.Categories.AsNoTracking().AnyAsync(c => c.CategoryName.ToLower().Trim() == normalized);
     }
 }

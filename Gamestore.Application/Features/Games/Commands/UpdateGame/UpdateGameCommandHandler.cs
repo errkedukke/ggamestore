@@ -1,18 +1,16 @@
 ﻿using AutoMapper;
-using Gamestore.Application.Contracts.Logging;
 using Gamestore.Application.Contracts.Persistance;
-using Gamestore.Application.Features.Common;
+using Gamestore.Application.Exceptions;
 using MediatR;
 
 namespace Gamestore.Application.Features.Games.Commands.UpdateGame;
 
-public class UpdateGameCommandHandler : CommandBase<UpdateGameCommand, Unit>, IRequestHandler<UpdateGameCommand, Unit>
+public class UpdateGameCommandHandler : IRequestHandler<UpdateGameCommand, Unit>
 {
     private readonly IGameRepository _gameRepository;
     private readonly IMapper _mapper;
 
-    public UpdateGameCommandHandler(IGameRepository gameRepository, IMapper mapper, IAppLogger<UpdateGameCommand> appLogger)
-        : base(appLogger)
+    public UpdateGameCommandHandler(IGameRepository gameRepository, IMapper mapper)
     {
         _gameRepository = gameRepository;
         _mapper = mapper;
@@ -20,11 +18,11 @@ public class UpdateGameCommandHandler : CommandBase<UpdateGameCommand, Unit>, IR
 
     public async Task<Unit> Handle(UpdateGameCommand request, CancellationToken cancellationToken)
     {
-        var validator = new UpdateGameCommandValidator();
-        await ValidateAsync(validator, request, cancellationToken);
+        var gameToUpdate = await _gameRepository.GetByIdAsync(request.Id, cancellationToken)
+            ?? throw new NotFoundException($"The game with the ID: {request.Id} was not found.");
 
-        var gameToUpdate = _mapper.Map<Domain.Game>(request);
-        await _gameRepository.UpdateAsync(gameToUpdate);
+        _mapper.Map(request, gameToUpdate);
+        await _gameRepository.UpdateAsync(gameToUpdate, cancellationToken);
 
         return Unit.Value;
     }

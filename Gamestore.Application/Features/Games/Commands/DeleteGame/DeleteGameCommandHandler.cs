@@ -15,14 +15,10 @@ public class DeleteGameCommandHandler : IRequestHandler<DeleteGameCommand, Unit>
 
     public async Task<Unit> Handle(DeleteGameCommand request, CancellationToken cancellationToken)
     {
-        var gameToDelete = await _gameRepository.GetByIdAsync(request.Id);
+        var gameToDelete = await _gameRepository.GetByIdAsync(request.Id, cancellationToken)
+            ?? throw new NotFoundException($"The game with the ID: {request.Id} was not found.");
 
-        if (gameToDelete == null)
-        {
-            throw new NotFoundException(nameof(gameToDelete), request.Id);
-        }
-
-        await _gameRepository.DeleteAsync(gameToDelete);
+        await _gameRepository.DeleteAsync(gameToDelete, cancellationToken);
 
         return Unit.Value;
     }

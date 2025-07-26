@@ -16,16 +16,22 @@ public class GamestoreProfile : Profile
 {
     public GamestoreProfile()
     {
+        #region Category
         CreateMap<Category, CategoryDto>().ReverseMap();
         CreateMap<Category, CreateCategoryCommand>().ReverseMap();
         CreateMap<Category, UpdateCategoryCommand>().ReverseMap();
+        #endregion
 
+        #region Game
         CreateMap<Game, GameDto>().ReverseMap();
         CreateMap<Game, CreateGameCommand>().ReverseMap();
         CreateMap<Game, UpdateGameCommand>().ReverseMap();
+        #endregion
 
+        #region Genre
         CreateMap<Genre, GenreDto>().ReverseMap();
         CreateMap<Genre, CreateGenreCommand>().ReverseMap();
         CreateMap<Genre, UpdateGenreCommand>().ReverseMap();
+        #endregion
     }
 }

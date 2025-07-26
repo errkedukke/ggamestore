@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Gamestore.Application.Contracts.Persistance;
-using Gamestore.Domain;
+using Gamestore.Application.Exceptions;
 using MediatR;
 
 namespace Gamestore.Application.Features.Genres.Commands.UpdateGenre;
@@ -18,8 +18,11 @@ public class UpdateGenreCommandHandler : IRequestHandler<UpdateGenreCommand, Uni
 
     public async Task<Unit> Handle(UpdateGenreCommand request, CancellationToken cancellationToken)
     {
-        var genreToUpdate = _mapper.Map<Genre>(request);
-        await _genreRepository.UpdateAsync(genreToUpdate);
+        var genreToUpdate = await _genreRepository.GetByIdAsync(request.Id, cancellationToken)
+            ?? throw new NotFoundException($"The genre with the ID: {request.Id} was not found.");
+
+        _mapper.Map(request, genreToUpdate);
+        await _genreRepository.UpdateAsync(genreToUpdate, cancellationToken);
 
         return Unit.Value;
     }

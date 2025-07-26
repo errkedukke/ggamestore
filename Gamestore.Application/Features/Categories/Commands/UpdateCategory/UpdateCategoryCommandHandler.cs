@@ -1,32 +1,27 @@
 ﻿using AutoMapper;
-using Gamestore.Application.Contracts.Logging;
 using Gamestore.Application.Contracts.Persistance;
-using Gamestore.Application.Features.Common;
-using Gamestore.Domain;
+using Gamestore.Application.Exceptions;
 using MediatR;
 namespace Gamestore.Application.Features.Categories.Commands.UpdateCategory;
 
-public class UpdateCategoryCommandHandler : CommandBase<UpdateCategoryCommand, Unit>, IRequestHandler<UpdateCategoryCommand, Unit>
+public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryCommand, Unit>
 {
     private readonly ICategoryRepository _categoryRepository;
     private readonly IMapper _mapper;
-    private readonly UpdateCategoryCommandValidator _validator;
 
-    public UpdateCategoryCommandHandler(ICategoryRepository categoryRepository, IMapper mapper, IAppLogger<UpdateCategoryCommand> logger) : base(logger)
+    public UpdateCategoryCommandHandler(ICategoryRepository categoryRepository, IMapper mapper)
     {
         _categoryRepository = categoryRepository;
         _mapper = mapper;
-        _validator = new UpdateCategoryCommandValidator();
     }
 
     public async Task<Unit> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
     {
-        await ValidateAsync(_validator, request, cancellationToken);
+        var categoryToUpdate = await _categoryRepository.GetByIdAsync(request.Id, cancellationToken)
+            ?? throw new NotFoundException($"The category with the ID: {request.Id} was not found.");
 
-        var category = await _categoryRepository.GetByIdAsync(request.Id, cancellationToken);
-        var categoryToUpdate = _mapper.Map<Category>(request);
-
-        await _categoryRepository.UpdateAsync(categoryToUpdate);
+        _mapper.Map(request, categoryToUpdate);
+        await _categoryRepository.UpdateAsync(categoryToUpdate, cancellationToken);
 
         return Unit.Value;
     }

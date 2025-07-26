@@ -13,17 +13,15 @@ public class CreateCategoryCommandValidator : AbstractValidator<CreateCategoryCo
 
         RuleFor(x => x.CategoryName)
             .NotEmpty().WithMessage("Category name is required.")
-            .MaximumLength(100).WithMessage("Category name must not exceed 100 characters.");
+            .MaximumLength(100).WithMessage("Category name must not exceed 100 characters.")
+            .MustAsync(IsUniqueName).WithMessage("Category with this name already exists.");
 
         RuleFor(x => x.Description)
             .MaximumLength(250).WithMessage("Description must not exceed 250 characters.");
-
-        RuleFor(x => x)
-            .MustAsync(CategoryNameUnique).WithMessage("Category with this name already exists");
     }
 
-    private Task<bool> CategoryNameUnique(CreateCategoryCommand command, CancellationToken token)
+    private Task<bool> IsUniqueName(string categoryName, CancellationToken cancellationToken)
     {
-        return _categoryRepository.IsCategoryUnique(command.CategoryName);
+        return _categoryRepository.IsCategoryUnique(categoryName);
     }
 }
