@@ -19,6 +19,7 @@ export class GameCarousel implements OnInit {
   currentPage = 0;
 
   isLoading = false;
+  loadFailed = false;
   errorMessage: string | null = null;
 
   constructor(private carouselService: GameCarouselService) {}
@@ -29,13 +30,17 @@ export class GameCarousel implements OnInit {
 
   loadGames(): void {
     this.isLoading = true;
+    this.loadFailed = false;
+    this.errorMessage = null;
+
     this.carouselService.fetchGames().subscribe({
       next: (data) => {
         this.games = data;
         this.isLoading = false;
       },
       error: () => {
-        this.errorMessage = 'Failed to load games.';
+        this.loadFailed = true;
+        this.errorMessage = 'Failed to load games. Please try again later.';
         this.isLoading = false;
       },
     });

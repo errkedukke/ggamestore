@@ -41,7 +41,7 @@
   >
     <div
       class="w-80 h-64 bg-gray-800 rounded-xl animate-pulse"
-      *ngFor="let _ of [1, 2, 3]"
+      *ngFor="let _ of [].constructor(pageSize)"
     ></div>
   </div>
 
@@ -51,6 +51,14 @@
     class="text-center text-red-400 py-10 text-lg"
   >
     {{ errorMessage }}
+    <div class="mt-4">
+      <button
+        (click)="loadGames()"
+        class="bg-cyan-400 hover:bg-cyan-500 text-white px-5 py-2 rounded-md transition"
+      >
+        Retry
+      </button>
+    </div>
   </div>
 
   <!-- No Games -->
