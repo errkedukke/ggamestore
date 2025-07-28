@@ -7,4 +7,5 @@ export interface Game {
   imageKey: string;
   genre: string;
   category: string;
+  description: string;
 }

@@ -17,7 +17,7 @@ export class GameCarousel implements OnInit {
 
   games: Game[] = [];
   currentPage = 0;
-
+  selectedGame: Game | null = null;
   isLoading = false;
   loadFailed = false;
   errorMessage: string | null = null;
@@ -60,6 +60,14 @@ export class GameCarousel implements OnInit {
     if (this.currentPage > 0) {
       this.currentPage--;
     }
+  }
+
+  selectGame(game: Game) {
+    this.selectedGame = game;
+  }
+
+  goBack() {
+    this.selectedGame = null;
   }
 
   get totalPages(): number {
