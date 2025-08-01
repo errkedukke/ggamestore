@@ -1,4 +1,5 @@
 export interface Game {
+  Id: string;
   name: string;
   price: number;
   unitInStock: number;
@@ -6,6 +7,6 @@ export interface Game {
   releaseDate: string;
   imageKey: string;
   genre: string;
-  category: string;
+  categoryId: string;
   description: string;
 }

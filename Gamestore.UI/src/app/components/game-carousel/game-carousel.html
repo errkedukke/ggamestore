@@ -1,129 +1,166 @@
-<div *ngIf="!selectedGame">
-  <div class="bg-gray-1000 text-white py-10 px-4">
-    <!-- Heading + Buttons Container -->
-    <div class="max-w-7xl mx-auto mb-6">
-      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between">
-        <h2 class="text-3xl font-bold mb-4 sm:mb-0">{{ title }}</h2>
-
-        <!-- Pagination Buttons -->
-        <div class="flex space-x-3">
-          <button
-            (click)="prevPage()"
-            [disabled]="currentPage === 0"
-            aria-label="Previous Page"
-            class="bg-neutral-800 hover:bg-neutral-700 p-2 rounded-full transition disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-cyan-400"
-          >
-            ←
-          </button>
-          <button
-            (click)="nextPage()"
-            [disabled]="(currentPage + 1) * pageSize >= games.length"
-            aria-label="Next Page"
-            class="bg-neutral-800 hover:bg-neutral-700 p-2 rounded-full transition disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-cyan-400"
-          >
-            →
-          </button>
-        </div>
-      </div>
-
-      <!-- Pagination Info -->
-      <p
-        class="text-sm text-neutral-400 text-right mt-2"
-        *ngIf="!isLoading && games.length > 0"
-      >
-        Page {{ currentPage + 1 }} of {{ totalPages }}
-      </p>
-    </div>
-
-    <!-- Loading State -->
-    <div
-      *ngIf="isLoading"
-      class="flex justify-center gap-6 flex-wrap max-w-7xl mx-auto"
-    >
-      <div
-        class="w-80 h-64 bg-gray-800 rounded-xl animate-pulse"
-        *ngFor="let _ of [].constructor(pageSize)"
-      ></div>
-    </div>
-
-    <!-- Error Message -->
-    <div
-      *ngIf="!isLoading && errorMessage"
-      class="text-center text-red-400 py-10 text-lg"
-    >
-      {{ errorMessage }}
-      <div class="mt-4">
-        <button
-          (click)="loadGames()"
-          class="bg-cyan-400 hover:bg-cyan-500 text-white px-5 py-2 rounded-md transition"
+<div class="flex max-w-7xl mx-auto">
+  <aside class="w-52 text-white mt-11">
+    <div class="bg-gray-900 rounded-xl shadow-md p-4">
+      <h2 class="text-lg font-bold mb-3">Categories</h2>
+      <ul class="space-y-2">
+        <!-- All Games -->
+        <li
+          class="px-3 py-2 rounded-md cursor-pointer hover:bg-gray-800 transition"
+          [ngClass]="{
+            'bg-gray-800 text-cyan-400 font-medium': !selectedCategoryId
+          }"
+          (click)="filterByCategory(null)"
         >
-          Retry
-        </button>
-      </div>
-    </div>
+          All Games
+        </li>
 
-    <!-- No Games -->
-    <div
-      *ngIf="!isLoading && !errorMessage && games.length === 0"
-      class="text-center text-neutral-500 py-10 text-lg"
-    >
-      No games found.
+        <!-- Individual Categories -->
+        <li
+          *ngFor="let category of categories"
+          class="px-3 py-2 rounded-md cursor-pointer hover:bg-gray-800 transition"
+          [ngClass]="{
+            'bg-gray-800 text-cyan-400 font-medium':
+              selectedCategoryId === category.id
+          }"
+          (click)="filterByCategory(category.id)"
+        >
+          {{ category.categoryName }}
+        </li>
+      </ul>
     </div>
+  </aside>
 
-    <!-- Game Cards -->
-    <div
-      *ngIf="!isLoading && !errorMessage && games.length > 0"
-      class="flex justify-center flex-wrap gap-6 max-w-7xl mx-auto"
-    >
-      <div
-        *ngFor="let game of paginatedGames"
-        (click)="selectGame(game)"
-        class="w-full sm:w-80 bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:-translate-y-1 hover:scale-105 transform transition duration-300"
-      >
-        <img
-          [src]="game.imageKey"
-          [alt]="game.name"
-          class="w-full h-48 object-cover"
-        />
-        <div class="p-5 flex flex-col gap-2">
-          <p class="text-sm text-neutral-400">{{ game.genre }}</p>
-          <p class="text-lg font-semibold line-clamp-2" [title]="game.name">
-            {{ game.name }}
+  <section class="flex-1">
+    <div *ngIf="!selectedGame">
+      <div class="bg-gray-1000 text-white py-10 px-4">
+        <!-- Heading + Buttons Container -->
+        <div class="max-w-7xl mx-auto mb-6">
+          <div
+            class="flex flex-col sm:flex-row sm:items-end sm:justify-between"
+          >
+            <h2 class="text-3xl font-bold mb-4 sm:mb-0">{{ title }}</h2>
+
+            <!-- Pagination Buttons -->
+            <div class="flex space-x-3">
+              <button
+                (click)="prevPage()"
+                [disabled]="currentPage === 0"
+                aria-label="Previous Page"
+                class="bg-neutral-800 hover:bg-neutral-700 p-2 rounded-full transition disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-cyan-400"
+              >
+                ←
+              </button>
+              <button
+                (click)="nextPage()"
+                [disabled]="(currentPage + 1) * pageSize >= games.length"
+                aria-label="Next Page"
+                class="bg-neutral-800 hover:bg-neutral-700 p-2 rounded-full transition disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-cyan-400"
+              >
+                →
+              </button>
+            </div>
+          </div>
+
+          <!-- Pagination Info -->
+          <p
+            class="text-sm text-neutral-400 text-right mt-2"
+            *ngIf="!isLoading && games.length > 0"
+          >
+            Page {{ currentPage + 1 }} of {{ totalPages }}
           </p>
-          <div class="flex justify-between items-center mt-1">
-            <span class="text-cyan-400 font-bold text-base"
-              >${{ game.price }}</span
-            >
+        </div>
+
+        <!-- Loading State -->
+        <div
+          *ngIf="isLoading"
+          class="flex justify-center gap-6 flex-wrap max-w-7xl mx-auto"
+        >
+          <div
+            class="w-80 h-64 bg-gray-800 rounded-xl animate-pulse"
+            *ngFor="let _ of [].constructor(pageSize)"
+          ></div>
+        </div>
+
+        <!-- Error Message -->
+        <div
+          *ngIf="!isLoading && errorMessage"
+          class="text-center text-red-400 py-10 text-lg"
+        >
+          {{ errorMessage }}
+          <div class="mt-4">
             <button
-              class="bg-cyan-400 hover:bg-cyan-500 text-white text-sm px-4 py-1.5 rounded transition tracking-tight"
+              (click)="loadGames()"
+              class="bg-cyan-400 hover:bg-cyan-500 text-white px-5 py-2 rounded-md transition"
             >
-              Buy
+              Retry
             </button>
+          </div>
+        </div>
+
+        <!-- No Games -->
+        <div
+          *ngIf="!isLoading && !errorMessage && games.length === 0"
+          class="text-center text-neutral-500 py-10 text-lg"
+        >
+          No games found.
+        </div>
+
+        <!-- Game Cards -->
+        <div
+          *ngIf="!isLoading && !errorMessage && games.length > 0"
+          class="flex justify-center flex-wrap gap-6 max-w-7xl mx-auto"
+        >
+          <div
+            *ngFor="let game of paginatedGames"
+            (click)="selectGame(game)"
+            class="w-full sm:w-80 bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:-translate-y-1 hover:scale-105 transform transition duration-300"
+          >
+            <img
+              [src]="game.imageKey"
+              [alt]="game.name"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-5 flex flex-col gap-2">
+              <p class="text-sm text-neutral-400">{{ game.genre }}</p>
+              <p class="text-lg font-semibold line-clamp-2" [title]="game.name">
+                {{ game.name }}
+              </p>
+              <div class="flex justify-between items-center mt-1">
+                <span class="text-cyan-400 font-bold text-base"
+                  >${{ game.price }}</span
+                >
+                <button
+                  class="bg-cyan-400 hover:bg-cyan-500 text-white text-sm px-4 py-1.5 rounded transition tracking-tight"
+                >
+                  Buy
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<div *ngIf="selectedGame" class="max-w-4xl mx-auto text-white px-4 py-10">
-  <button
-    (click)="goBack()"
-    class="mb-6 bg-cyan-400 hover:bg-cyan-500 text-white px-4 py-2 rounded-md transition"
-  >
-    ← Back
-  </button>
+    <div *ngIf="selectedGame" class="max-w-4xl mx-auto text-white px-4 py-10">
+      <button
+        (click)="goBack()"
+        class="mb-6 bg-cyan-400 hover:bg-cyan-500 text-white px-4 py-2 rounded-md transition"
+      >
+        ← Back
+      </button>
 
-  <img
-    [src]="selectedGame.imageKey"
-    [alt]="selectedGame.name"
-    class="w-full h-[28rem] sm:h-[36rem] object-cover rounded-2xl shadow-lg mb-6"
-  />
+      <img
+        [src]="selectedGame.imageKey"
+        [alt]="selectedGame.name"
+        class="w-full h-[28rem] sm:h-[36rem] object-cover rounded-2xl shadow-lg mb-6"
+      />
 
-  <h2 class="text-3xl font-bold mb-2">{{ selectedGame.name }}</h2>
-  <p class="text-neutral-400 mb-4">{{ selectedGame.genre }}</p>
-  <p class="text-lg">{{ selectedGame.description || "No description." }}</p>
-  <p class="text-cyan-400 text-xl font-semibold mt-4">
-    ${{ selectedGame.price }}
-  </p>
+      <h2 class="text-3xl font-bold mb-2">{{ selectedGame.name }}</h2>
+      <p class="text-neutral-400 mb-4">{{ selectedGame.genre }}</p>
+      <p class="text-lg">{{ selectedGame.description || "No description." }}</p>
+      <p class="text-cyan-400 text-xl font-semibold mt-4">
+        ${{ selectedGame.price }}
+      </p>
+    </div>
+  </section>
 </div>

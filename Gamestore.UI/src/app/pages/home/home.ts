@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GameCarousel } from '../../components/game-carousel/game-carousel';
-import { GameCard } from '../../components/game-card/game-card';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { SecondaryNavbar } from '../../components/secondary-navbar/secondary-navbar';
 import { Footer } from '../../components/footer/footer';
@@ -14,7 +13,6 @@ import { Footer } from '../../components/footer/footer';
     GameCarousel,
     NavbarComponent,
     SecondaryNavbar,
-    GameCard,
     Footer,
   ],
   templateUrl: './home.html',

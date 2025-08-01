@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Game } from '../../models/game';
-import { GameCarouselService } from './game-carousel.service';
+import { Game } from '../../models/Game';
+import { GameService } from '../../services/game.service';
 import { paginate } from '../../utils/pagination';
+import { Category } from '../../models/Category';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-game-carousel',
@@ -16,16 +18,33 @@ export class GameCarousel implements OnInit {
   @Input() title = 'Featured Games';
 
   games: Game[] = [];
+  categories: Category[] = [];
+
   currentPage = 0;
   selectedGame: Game | null = null;
   isLoading = false;
   loadFailed = false;
   errorMessage: string | null = null;
 
-  constructor(private carouselService: GameCarouselService) {}
+  selectedCategoryId: string | null = null;
+  filteredGames: Game[] = [];
+
+  constructor(
+    private gameService: GameService,
+    private categoryService: CategoryService
+  ) {}
 
   ngOnInit(): void {
     this.loadGames();
+    this.LoadCategoreis();
+  }
+
+  LoadCategoreis(): void {
+    this.categoryService.getCategories().subscribe({
+      next: (data) => {
+        this.categories = data;
+      },
+    });
   }
 
   loadGames(): void {
@@ -33,7 +52,7 @@ export class GameCarousel implements OnInit {
     this.loadFailed = false;
     this.errorMessage = null;
 
-    this.carouselService.fetchGames().subscribe({
+    this.gameService.getGames().subscribe({
       next: (data) => {
         this.games = data;
         this.isLoading = false;
@@ -72,5 +91,13 @@ export class GameCarousel implements OnInit {
 
   get totalPages(): number {
     return Math.ceil(this.games.length / this.pageSize);
+  }
+
+  filterByCategory(categoryId: string | null): void {
+    this.selectedCategoryId = categoryId;
+
+    this.filteredGames = categoryId
+      ? this.games.filter((game) => game.categoryId === categoryId)
+      : this.games;
   }
 }
