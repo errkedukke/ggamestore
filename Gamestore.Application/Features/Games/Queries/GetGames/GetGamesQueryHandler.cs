@@ -17,7 +17,14 @@ public class GetGamesQueryHandler : IRequestHandler<GetGamesQuery, List<GameDto>
 
     public async Task<List<GameDto>> Handle(GetGamesQuery request, CancellationToken cancellationToken)
     {
-        var games = await _gameRepository.GetAsync();
+        var games = (await _gameRepository.GetAsync(cancellationToken)).AsEnumerable();
+
+        if (request.CategoryId.HasValue)
+            games = [.. games.Where(g => g.CategoryId == request.CategoryId.Value)];
+
+        if (request.GenreId.HasValue)
+            games = [.. games.Where(g => g.GenreId == request.GenreId.Value)];
+
         var result = _mapper.Map<List<GameDto>>(games);
 
         return result;

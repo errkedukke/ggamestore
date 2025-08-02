@@ -24,9 +24,9 @@ public class GamesController : ControllerBase
 
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult<List<GameDto>>> GetGames()
+    public async Task<ActionResult<List<GameDto>>> GetGames([FromQuery] GetGamesQuery query)
     {
-        var response = await _mediator.Send(new GetGamesQuery());
+        var response = await _mediator.Send(query);
         return Ok(response);
     }
 

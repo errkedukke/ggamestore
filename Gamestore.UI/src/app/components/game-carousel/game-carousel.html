@@ -5,11 +5,13 @@
       <ul class="space-y-2">
         <!-- All Games -->
         <li
-          class="px-3 py-2 rounded-md cursor-pointer hover:bg-gray-800 transition"
+          class="px-3 py-2 rounded-md cursor-pointer text-white hover:bg-gray-800 transition"
           [ngClass]="{
             'bg-gray-800 text-cyan-400 font-medium': !selectedCategoryId
           }"
           (click)="filterByCategory(null)"
+          role="button"
+          tabIndex="0"
         >
           All Games
         </li>

@@ -16,7 +16,7 @@ public class GameDto
 
     public string ImageKey { get; set; } = string.Empty;
 
-    public string Genre { get; set; } = string.Empty;
+    public Guid GenreId { get; set; }
 
-    public string Category { get; set; } = string.Empty;
+    public Guid CategoryId { get; set; }
 }

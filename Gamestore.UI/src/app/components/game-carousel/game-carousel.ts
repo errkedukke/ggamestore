@@ -18,6 +18,7 @@ export class GameCarousel implements OnInit {
   @Input() title = 'Featured Games';
 
   games: Game[] = [];
+  filteredGames: Game[] = [];
   categories: Category[] = [];
 
   currentPage = 0;
@@ -25,9 +26,7 @@ export class GameCarousel implements OnInit {
   isLoading = false;
   loadFailed = false;
   errorMessage: string | null = null;
-
   selectedCategoryId: string | null = null;
-  filteredGames: Game[] = [];
 
   constructor(
     private gameService: GameService,
@@ -55,6 +54,7 @@ export class GameCarousel implements OnInit {
     this.gameService.getGames().subscribe({
       next: (data) => {
         this.games = data;
+        this.filteredGames = data;
         this.isLoading = false;
       },
       error: () => {
@@ -66,7 +66,7 @@ export class GameCarousel implements OnInit {
   }
 
   get paginatedGames(): Game[] {
-    return paginate(this.games, this.currentPage, this.pageSize);
+    return paginate(this.filteredGames, this.currentPage, this.pageSize);
   }
 
   nextPage(): void {
@@ -97,7 +97,9 @@ export class GameCarousel implements OnInit {
     this.selectedCategoryId = categoryId;
 
     this.filteredGames = categoryId
-      ? this.games.filter((game) => game.categoryId === categoryId)
+      ? this.games.filter(
+          (game) => game.categoryId?.toLowerCase() === categoryId.toLowerCase()
+        )
       : this.games;
   }
 }

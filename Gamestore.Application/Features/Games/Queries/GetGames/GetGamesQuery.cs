@@ -2,4 +2,4 @@
 
 namespace Gamestore.Application.Features.Game.Queries.GetGames;
 
-public record GetGamesQuery : IRequest<List<GameDto>>;
+public record GetGamesQuery(Guid? CategoryId, Guid? GenreId) : IRequest<List<GameDto>>;
