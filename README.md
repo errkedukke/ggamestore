@@ -21,7 +21,7 @@ src/
 │ ├── Gamestore.Infrastructure # External services, logging, cache, email, etc.
 │ └── Gamestore.Persistence # EF Core DbContext + Repositories
 └── UI/
-└── Gamestore.UI # Angular 17+ frontend (standalone components + Tailwind)
+└── Gamestore.UI # Angular 20 frontend (standalone components + Tailwind)
 ```
 ---
 
@@ -35,7 +35,7 @@ src/
 - ASP.NET Core Identity
 
 ### Frontend (Angular)
-- Angular 17 Standalone
+- Angular 20
 - Tailwind CSS for styling
 - Component-based UI (GameCard, Navbar, etc.)
 
