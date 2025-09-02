@@ -1,6 +1,9 @@
 ﻿# 🎮 Gamestore
 
 A full-stack web application for managing and browsing digital games. Built with **.NET + Angular**, following **Clean Architecture** principles.
+![Gamestore Screenshot 1](https://i.imgur.com/7rzmUzO.png)
+![Gamestore Screenshot 2](https://i.imgur.com/38YwLps.png)
+
 
 ---
 
